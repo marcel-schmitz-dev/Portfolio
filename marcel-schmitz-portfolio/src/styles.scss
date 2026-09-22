@@ -1,0 +1,15 @@
+:root {
+    --color-bg: #262E34;          
+    --color-primary: #89BCD9;    
+    --color-secondary: #F8F5EC;   
+    --color-inactive: #262E341F;
+    --color-error: #E44C36;
+    --color-done: #97E163;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    color: var(--color-secondary);
+}

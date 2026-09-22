@@ -1,0 +1,93 @@
+<main class="home">
+    <section class="hero">
+    <!-- Absolutes Logo -->
+    <div class="hero__top-logo-block">
+        <img src="assets/logo.png" alt="Logo" class="hero__top-logo-img" />
+        <div class="hero__top-logo-text">
+        <span class="name-anta">M.Schmitz</span>
+        <span class="dev-josefin">developer</span>
+        </div>
+    </div>
+
+    <!-- Absolutes Social-Cluster -->
+    <div class="hero__socials-vertical">
+        <a href="mailto:deine.email@web.de" aria-label="Email">
+        <img src="assets/Mail%20def..webp" alt="Email" class="social-img" />
+        </a>
+        <a href="https://github.com/dein-github" target="_blank" aria-label="GitHub">
+        <img src="assets/Github%20button.webp" alt="GitHub" class="social-img" />
+        </a>
+        <a href="https://linkedin.com/in/dein-linkedin" target="_blank" aria-label="LinkedIn">
+        <img src="assets/Linkedin%20button.webp" alt="LinkedIn" class="social-img" />
+        </a>
+    </div>
+
+    <!-- Hauptbereich Bild + Text -->
+    <div class="hero__container">
+        <div class="hero__image-col">
+        <div class="hero__blob-box">
+            <img src="assets/hero-blob-default.webp" alt="" class="hero__blob blob-default" />
+            <img src="assets/hero-blob-hover.webp" alt="" class="hero__blob blob-hover" />
+            <img src="assets/Profil.webp" alt="Marcel Schmitz" class="hero__avatar" />
+        </div>
+        </div>
+
+        <div class="hero__text-col">
+        <h1 class="hero__title">Marcel Schmitz</h1>
+        <p class="hero__subtitle">{{ t.subtitle }}</p>
+        </div>
+    </div>
+
+    <!-- Absoluter Scroll-Pfeil nach Figma (top: 540px, left: 906px) -->
+    <a href="#why-me" class="hero__scroll" aria-label="Nach unten scrollen">
+        <img src="assets/ArrowDefault.png" alt="" class="arrow-img arrow-default" />
+        <img src="assets/ArrowHover.png" alt="" class="arrow-img arrow-hover" />
+    </a>
+
+    <!-- Unterer heller Nav-Balken -->
+    <nav class="hero__nav">
+        <div class="hero__nav-logo-block">
+        <img src="assets/logoBlack.webp" alt="Logo" class="hero__nav-logo-img" />
+        <div class="hero__nav-logo-text">
+            <span class="name-anta">M.Schmitz</span>
+            <span class="dev-josefin">developer</span>
+        </div>
+        </div>
+        <ul class="hero__nav-links">
+        <li>
+            <a href="#why-me">{{ t.whyMe }}</a>
+        </li>
+        <li>
+            <a href="#skills">{{ t.skills }}</a>
+        </li>
+        <li>
+            <a href="#projects">{{ t.projects }}</a>
+        </li>
+        <li>
+            <a href="#contact">{{ t.contact }}</a>
+        </li>
+        </ul>
+
+        <div class="hero__nav-lang">
+        <button type="button" class="lang-btn" (click)="toggleLanguage()">
+            <img
+            [src]="currentLang === 'de' ? 'assets/active-DE.png' : 'assets/active-EN.png'"
+            [alt]="currentLang.toUpperCase()"
+            class="lang-img"
+            />
+        </button>
+        </div>
+    </nav>
+    </section>
+
+    <!-- Folgende Sektionen -->
+    <section id="why-me" class="content-section">
+    <h2>{{ t.whyMe }}</h2>
+    </section>
+    <section id="skills" class="content-section">
+    <h2>{{ t.skills }}</h2>
+    </section>
+    <section id="projects" class="content-section">
+    <h2>{{ t.projects }}</h2>
+    </section>
+</main>
