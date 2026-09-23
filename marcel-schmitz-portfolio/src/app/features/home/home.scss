@@ -194,6 +194,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; // Wichtig, damit das Avatar-Bild perfekt im Blob beschnitten wird
 
     @media (max-width: 768px) {
         width: 300px;
@@ -208,6 +209,7 @@
         object-fit: contain;
         transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
         pointer-events: none;
+        z-index: 1; // Blob liegt über den Rändern oder drunter je nach Layer, hier standard z-index
     }
 
     .blob-hover {
@@ -218,10 +220,11 @@
     .hero__avatar {
         position: relative;
         z-index: 2;
-        width: 60%;
-        height: auto;
+        width: 105%; // etwas breiter skalieren, damit es den Blob ausfüllt
+        height: 105%;
         object-fit: cover;
-        border-radius: 50%;
+        object-position: center 18%; // Justiert den Ausschnitt nach oben/unten (Arme tiefer/höher)
+        margin-top: 40px; // Schiebt das Bild nach unten, damit die Arme auf der Nav-Bar-Höhe ansetzen
     }
 
     &:hover {
