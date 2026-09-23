@@ -23,22 +23,22 @@ export class Skills {
   };
 
   skillList = [
-    { name: 'Angular', icon: 'assets/Skills/Angular' },
-    { name: 'TypeScript', icon: 'assets/Skills/TypeScript' },
-    { name: 'JavaScript', icon: 'assets/Skills/JavaScript' },
-    { name: 'HTML5', icon: 'assets/Skills/HTML' },
-    { name: 'CSS3', icon: 'assets/Skills/CSS' },
-    { name: 'REST-API', icon: 'assets/Skills/REST-API' },
-    { name: 'Supabase', icon: 'assets/Skills/Supabase' },
-    { name: 'Git', icon: 'assets/Skills/Git' },
-    { name: 'Material Design', icon: 'assets/Skills/MaterialDesign' },
-    { name: 'Scrum', icon: 'assets/Skills/scrum' },
-  ];
+  { name: 'Angular', icon: 'assets/Skills/Angular.png' },
+  { name: 'TypeScript', icon: 'assets/Skills/TypeScript.png' },
+  { name: 'JavaScript', icon: 'assets/Skills/JavaScript.png' },
+  { name: 'HTML5', icon: 'assets/Skills/HTML.png' },
+  { name: 'CSS3', icon: 'assets/Skills/CSS.png' },
+  { name: 'REST-API', icon: 'assets/Skills/REST-API.png' },
+  { name: 'Supabase', icon: 'assets/Skills/Supabase.png' },
+  { name: 'Git', icon: 'assets/Skills/Git.png' },
+  { name: 'Material Design', icon: 'assets/Skills/MaterialDesign.png' },
+  { name: 'Scrum', icon: 'assets/Skills/scrum.png' },
+];
 
-  learningList = [
-    { name: 'React', icon: 'assets/Skills/React' },
-    { name: 'Vue.js', icon: 'assets/Skills/Vue' },
-  ];
+learningList = [
+  { name: 'React', icon: 'assets/Skills/React.png' },
+  { name: 'Vue.js', icon: 'assets/Skills/Vue.png' },
+];
 
   get t() {
     return this.translations[this.lang] || this.translations.de;

@@ -39,10 +39,8 @@
       <img src="assets/ArrowDefault.png" alt="" class="arrow-img arrow-default" />
       <img src="assets/ArrowHover.png" alt="" class="arrow-img arrow-hover" />
     </a>
-    <!-- <nav class="hero__nav"> HIER GELÖSCHT -->
   </section>
 
-  <!-- <nav> HIER HIN VERSCHOBEN (direkt nach .hero) -->
   <nav class="hero__nav">
     <div class="hero__nav-logo-block">
       <img src="assets/logoBlack.webp" alt="Logo" class="hero__nav-logo-img" />
@@ -79,9 +77,8 @@
 
   <!-- Restlicher Content -->
   <app-why-me [lang]="currentLang" />
-  <section id="skills" class="content-section">
-    <h2>{{ t.skills }}</h2>
-  </section>
+  <app-skills [lang]="currentLang" />
+  
   <section id="projects" class="content-section">
     <h2>{{ t.projects }}</h2>
   </section>

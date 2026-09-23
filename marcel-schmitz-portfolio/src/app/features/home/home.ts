@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { WhyMe } from '../why-me/why-me';
+import { Skills } from '../skills/skills';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [WhyMe],
+  imports: [WhyMe, Skills],
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })
 export class Home {
-  currentLang: 'de' | 'en' = 'de';
+  currentLang: 'de' | 'en' = 'en';
 
   translations = {
     de: {

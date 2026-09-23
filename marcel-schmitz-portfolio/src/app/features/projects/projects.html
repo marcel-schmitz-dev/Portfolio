@@ -1,0 +1,52 @@
+<section id="projects" class="projects-section">
+  <div class="projects-container">
+    <h2 class="projects-title">Portfolio</h2>
+
+    <!-- Tab Leiste -->
+    <div class="projects-tabs">
+      @for (project of projects; track project.id) {
+        <button
+          class="tab-btn"
+          [class.active]="selectedProject.id === project.id"
+          (click)="selectProject(project)"
+        >
+          {{ project.name }}
+        </button>
+      }
+    </div>
+
+    <!-- Aktives Projekt Detail -->
+    <div class="project-detail-card" *ngIf="selectedProject">
+      <div class="project-image-wrapper">
+        <img [src]="selectedProject.image" [alt]="selectedProject.name" class="project-img" />
+        @if (selectedProject.ongoing) {
+          <span class="ongoing-badge">Ongoing</span>
+        }
+      </div>
+
+      <div class="project-info">
+        <div class="project-header-row">
+          <h3 class="project-name">{{ selectedProject.name }}</h3>
+          <span class="project-duration">{{ selectedProject.duration }}</span>
+        </div>
+
+        <p class="project-desc">
+          {{
+            currentLang === 'en' ? selectedProject.description.en : selectedProject.description.de
+          }}
+        </p>
+
+        <div class="tech-stack">
+          @for (tech of selectedProject.technologies; track tech) {
+            <span class="tech-badge">{{ tech }}</span>
+          }
+        </div>
+
+        <div class="project-actions" *ngIf="!selectedProject.ongoing">
+          <a [href]="selectedProject.liveLink" target="_blank" class="btn-primary">Live Test</a>
+          <a [href]="selectedProject.githubLink" target="_blank" class="btn-secondary">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
