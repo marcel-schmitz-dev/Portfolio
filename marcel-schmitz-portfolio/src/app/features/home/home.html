@@ -39,45 +39,46 @@
       <img src="assets/ArrowDefault.png" alt="" class="arrow-img arrow-default" />
       <img src="assets/ArrowHover.png" alt="" class="arrow-img arrow-hover" />
     </a>
-
-    <nav class="hero__nav">
-      <div class="hero__nav-logo-block">
-        <img src="assets/logoBlack.webp" alt="Logo" class="hero__nav-logo-img" />
-        <div class="hero__nav-logo-text">
-          <span class="name-anta">M.Schmitz</span>
-          <span class="dev-josefin">developer</span>
-        </div>
-      </div>
-      <ul class="hero__nav-links">
-        <li>
-          <a href="#why-me">{{ t.whyMe }}</a>
-        </li>
-        <li>
-          <a href="#skills">{{ t.skills }}</a>
-        </li>
-        <li>
-          <a href="#projects">{{ t.projects }}</a>
-        </li>
-        <li>
-          <a href="#contact">{{ t.contact }}</a>
-        </li>
-      </ul>
-
-      <div class="hero__nav-lang">
-        <button type="button" class="lang-btn" (click)="toggleLanguage()">
-          <img
-            [src]="currentLang === 'de' ? 'assets/active-DE.png' : 'assets/active-EN.png'"
-            [alt]="currentLang.toUpperCase()"
-            class="lang-img"
-          />
-        </button>
-      </div>
-    </nav>
+    <!-- <nav class="hero__nav"> HIER GELÖSCHT -->
   </section>
 
-  <section id="why-me" class="content-section">
-    <h2>{{ t.whyMe }}</h2>
-  </section>
+  <!-- <nav> HIER HIN VERSCHOBEN (direkt nach .hero) -->
+  <nav class="hero__nav">
+    <div class="hero__nav-logo-block">
+      <img src="assets/logoBlack.webp" alt="Logo" class="hero__nav-logo-img" />
+      <div class="hero__nav-logo-text">
+        <span class="name-anta">M.Schmitz</span>
+        <span class="dev-josefin">developer</span>
+      </div>
+    </div>
+    <ul class="hero__nav-links">
+      <li>
+        <a href="#why-me">{{ t.whyMe }}</a>
+      </li>
+      <li>
+        <a href="#skills">{{ t.skills }}</a>
+      </li>
+      <li>
+        <a href="#projects">{{ t.projects }}</a>
+      </li>
+      <li>
+        <a href="#contact">{{ t.contact }}</a>
+      </li>
+    </ul>
+
+    <div class="hero__nav-lang">
+      <button type="button" class="lang-btn" (click)="toggleLanguage()">
+        <img
+          [src]="currentLang === 'de' ? 'assets/active-DE.png' : 'assets/active-EN.png'"
+          [alt]="currentLang.toUpperCase()"
+          class="lang-img"
+        />
+      </button>
+    </div>
+  </nav>
+
+  <!-- Restlicher Content -->
+  <app-why-me [lang]="currentLang" />
   <section id="skills" class="content-section">
     <h2>{{ t.skills }}</h2>
   </section>

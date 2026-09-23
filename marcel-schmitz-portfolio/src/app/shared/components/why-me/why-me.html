@@ -1,1 +1,23 @@
-<p>why-me works!</p>
+<section id="why-me" class="why-me-section">
+  <h2 class="section-title">{{ t.title }}</h2>
+
+  <div class="why-me-container">
+    <div class="why-me__left">
+      <div class="location-box">
+        <img src="assets/WhyMe/located.png" alt="Location Pin" class="location-img" />
+        <p class="location-text">
+          <span class="highlight">{{ t.locationPrefix }}</span> {{ t.locationSuffix }}
+        </p>
+      </div>
+    </div>
+
+    <div class="why-me__right">
+      <p class="why-me__description">
+        {{ t.description }}
+      </p>
+      <a href="#contact" class="why-me__button">
+        {{ t.buttonText }}
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { WhyMe } from '../../shared/components/why-me/why-me';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [WhyMe],
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })

@@ -7,26 +7,23 @@
 .home {
     background: var(--color-bg);
     color: var(--color-secondary);
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
+    display: block;
     width: 100%;
-    overflow-x: hidden; 
+    overflow-x: clip;
 }
 
 .hero {
     position: relative;
-    width: 1214px;
-    height: 705px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 1214px;
+    min-height: 705px;
+    margin: 0 auto;
     box-sizing: border-box;
+    bottom: -10px;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
 
     @media (max-width: 1250px) {
-        width: 100%;
-        height: auto;
         min-height: 100vh;
     }
 
@@ -194,7 +191,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; // Wichtig, damit das Avatar-Bild perfekt im Blob beschnitten wird
+    overflow: hidden;
 
     @media (max-width: 768px) {
         width: 300px;
@@ -209,7 +206,7 @@
         object-fit: contain;
         transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
         pointer-events: none;
-        z-index: 1; // Blob liegt über den Rändern oder drunter je nach Layer, hier standard z-index
+        z-index: 1;
     }
 
     .blob-hover {
@@ -220,11 +217,11 @@
     .hero__avatar {
         position: relative;
         z-index: 2;
-        width: 105%; // etwas breiter skalieren, damit es den Blob ausfüllt
+        width: 105%;
         height: 105%;
         object-fit: cover;
-        object-position: center 18%; // Justiert den Ausschnitt nach oben/unten (Arme tiefer/höher)
-        margin-top: 40px; // Schiebt das Bild nach unten, damit die Arme auf der Nav-Bar-Höhe ansetzen
+        object-position: center 18%;
+        margin-top: 40px;
     }
 
     &:hover {
@@ -280,14 +277,14 @@
 .hero__nav {
     background: var(--color-primary);
     color: var(--color-bg);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 16px 80px;
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 100%;
     box-sizing: border-box;
 
     .hero__nav-logo-block {
