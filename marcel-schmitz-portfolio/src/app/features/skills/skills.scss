@@ -1,0 +1,116 @@
+.skills-section {
+  width: 100%;
+  max-width: 1214px;
+  margin: 0 auto;
+  padding: 100px 40px;
+  box-sizing: border-box;
+
+  .skills-title {
+    font-family: 'Anta', sans-serif;
+    font-weight: 400;
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    margin-bottom: 40px;
+  }
+
+  .skills-content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    flex: 1;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px;
+
+    .skill-icon {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .skill-name {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--color-secondary);
+      text-align: center;
+    }
+  }
+
+  .skills-learning-circle {
+    width: 340px;
+    height: 340px;
+    background: url('assets/Skills/SkillBlob') center / contain no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    .learning-title {
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1.1rem;
+      color: var(--color-secondary);
+      margin-bottom: 12px;
+    }
+
+    .learning-icons {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 12px;
+
+      .learning-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+
+        .skill-icon {
+          width: 38px;
+          height: 38px;
+          object-fit: contain;
+        }
+
+        .skill-name {
+          font-family: 'Josefin Sans', sans-serif;
+          font-size: 0.85rem;
+          color: var(--color-secondary);
+        }
+      }
+    }
+
+    .learning-text {
+      font-family: 'Josefin Sans', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: 0;
+      color: #FFFDFD;
+      text-align: center;
+      max-width: 240px;
+    }
+  }
+}
