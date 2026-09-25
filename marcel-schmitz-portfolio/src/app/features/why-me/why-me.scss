@@ -5,7 +5,7 @@
 
   .section-title {
     font-family: 'Anta', sans-serif;
-    font-size: 60px; // Laut Figma Headline-Spec
+    font-size: 60px;
     font-weight: 400;
     line-height: 120%;
     text-align: center;
@@ -67,9 +67,9 @@
   .why-me__description {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
-    font-size: 18px; // Laut Figma Text-About-Me spec
-    line-height: 120%; // Laut Figma spec (120%)
-    color: #F8F5EC; // Laut Figma Text-Color #F8F5EC
+    font-size: 18px;
+    line-height: 120%;
+    color: #F8F5EC;
     margin: 0;
   }
 
@@ -87,7 +87,7 @@
     font-size: 16px;
     text-decoration: none;
     transition: all 0.2s ease;
-    align-self: flex-end; // Rechts unter dem Text
+    align-self: flex-end;
 
     &:hover {
       background-color: #89BCD9;

@@ -1,50 +1,84 @@
-<section id="projects" class="projects-section">
-  <div class="projects-container">
-    <h2 class="projects-title">Portfolio</h2>
+<section class="projects" id="projects">
+  <div class="projects__container">
+    <!-- Überschrift wechselt je nach Sprache -->
+    <h2 class="projects__title">{{ sectionHeader[lang] }}</h2>
 
-    <!-- Tab Leiste -->
-    <div class="projects-tabs">
-      @for (project of projects; track project.id) {
-        <button
-          class="tab-btn"
-          [class.active]="selectedProject.id === project.id"
-          (click)="selectProject(project)"
-        >
-          {{ project.name }}
-        </button>
-      }
+    <!-- Tabs -->
+    <div class="projects__tabs">
+      <button class="project-tab active">1. Byterunner</button>
+      <button class="project-tab disabled">2. Coming Soon</button>
+      <button class="project-tab disabled">3. Coming Soon</button>
+      <button class="project-tab disabled">4. Coming Soon</button>
     </div>
 
-    <!-- Aktives Projekt Detail -->
-    <div class="project-detail-card" *ngIf="selectedProject">
-      <div class="project-image-wrapper">
-        <img [src]="selectedProject.image" [alt]="selectedProject.name" class="project-img" />
-        @if (selectedProject.ongoing) {
-          <span class="ongoing-badge">Ongoing</span>
-        }
+    <!-- Projekt Content (beinhaltet nun wieder beide Spalten links & rechts) -->
+    <div class="project-content active">
+      <div class="project-info">
+        <div class="info-item">
+          <img src="assets/project/blub.png" alt="Dot" class="info-dot-img" />
+          <div>
+            <h3>
+              {{ selectedProject.sectionTitles.about[lang] }}
+              <span class="duration"
+                >{{ selectedProject.sectionTitles.durationText[lang] }}
+                {{ selectedProject.duration }}</span
+              >
+            </h3>
+            <p>{{ selectedProject.description[lang] }}</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <img src="assets/project/blub.png" alt="Dot" class="info-dot-img" />
+          <div>
+            <h3>{{ selectedProject.sectionTitles.org[lang] }}</h3>
+            <p>{{ selectedProject.sectionTitles.orgText[lang] }}</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <img src="assets/project/blub.png" alt="Dot" class="info-dot-img" />
+          <div>
+            <h3>{{ selectedProject.sectionTitles.exp[lang] }}</h3>
+            <p>{{ selectedProject.sectionTitles.expText[lang] }}</p>
+          </div>
+        </div>
       </div>
 
-      <div class="project-info">
-        <div class="project-header-row">
-          <h3 class="project-name">{{ selectedProject.name }}</h3>
-          <span class="project-duration">{{ selectedProject.duration }}</span>
-        </div>
-
-        <p class="project-desc">
-          {{
-            currentLang === 'en' ? selectedProject.description.en : selectedProject.description.de
-          }}
-        </p>
-
+      <!-- Rechte Spalte -->
+      <div class="project-preview-col">
         <div class="tech-stack">
-          @for (tech of selectedProject.technologies; track tech) {
-            <span class="tech-badge">{{ tech }}</span>
-          }
+          <span class="tech-label">{{ selectedProject.sectionTitles.tech[lang] }}</span>
+          <div class="tech-icons">
+            <img
+              *ngFor="let tech of selectedProject.technologies"
+              [src]="tech.icon"
+              [alt]="tech.name"
+              class="tech-icon-img"
+              [title]="tech.name"
+            />
+          </div>
         </div>
 
-        <div class="project-actions" *ngIf="!selectedProject.ongoing">
-          <a [href]="selectedProject.liveLink" target="_blank" class="btn-primary">Live Test</a>
-          <a [href]="selectedProject.githubLink" target="_blank" class="btn-secondary">GitHub</a>
+        <div class="project-image-wrapper">
+          <img [src]="selectedProject.image" alt="Byterunner Game Preview" class="project-img" />
+        </div>
+
+        <div class="project-buttons">
+          <a
+            [href]="selectedProject.liveLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-primary"
+            >{{ selectedProject.sectionTitles.liveBtn[lang] }}</a
+          >
+          <a
+            [href]="selectedProject.githubLink"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+            >{{ selectedProject.sectionTitles.githubBtn[lang] }}</a
+          >
         </div>
       </div>
     </div>
