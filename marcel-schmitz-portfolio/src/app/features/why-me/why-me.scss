@@ -90,8 +90,9 @@
     align-self: flex-end;
 
     &:hover {
-      background-color: #89BCD9;
-      color: #121824;
+      background-color: rgba(137, 188, 217, 0.07); // Angepasst wie bei den Projekten
+      color: #89BCD9; // Farbe bleibt schön erhalten
+      border-color: #89BCD9;
     }
   }
 }
