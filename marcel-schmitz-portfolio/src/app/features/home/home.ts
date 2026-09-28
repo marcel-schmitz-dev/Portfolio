@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { WhyMe } from '../why-me/why-me';
 import { Skills } from '../skills/skills';
 import { Projects } from '../projects/projects';
+import { ContactMe } from '../contact-me/contact-me';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [WhyMe, Skills, Projects],
+  imports: [WhyMe, Skills, Projects, ContactMe],
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })

@@ -1,0 +1,145 @@
+<section id="contact" class="content-section contact-section">
+  <!-- Scroll to Top Arrow (oben rechts in der Section platziert) -->
+  <a href="#projects" class="contact__scroll-top" aria-label="Nach oben">
+    <img src="./assets/contact-me/arrow-up.png" alt="Scroll Up" class="arrow-img arrow-default" />
+    <img
+      src="./assets/contact-me/arrow-up-hover.png"
+      alt="Scroll Up Hover"
+      class="arrow-img arrow-hover"
+    />
+  </a>
+
+  <div class="contact__container">
+    <h2 class="contact__title">{{ t.title }}</h2>
+
+    <div class="contact__content-wrapper">
+      <!-- Oben: Linke Spalte (Text) & Rechte Spalte (Kontaktdaten) -->
+      <div class="contact__top-row">
+        <p class="contact__description">
+          {{ t.description }}
+        </p>
+        <div class="contact__details">
+          <div class="contact__detail-item">
+            <img src="./assets/contact-me/email.png" alt="Email" class="contact__icon" />
+            <span>{{ t.emailLabel }} fohrer.developer@gmail.com</span>
+          </div>
+          <div class="contact__detail-item">
+            <img src="./assets/contact-me/phone.png" alt="Phone" class="contact__icon" />
+            <span>{{ t.phoneLabel }} 0157 123 456 68</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Darunter: Das Formular -->
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact__form">
+        <div class="contact__form-row">
+          <!-- Name Feld -->
+          <div
+            class="contact__input-group"
+            [class.error]="nameTouched && contactForm.get('name')?.invalid"
+          >
+            <label for="name" class="contact__label">{{ t.namePlaceholder }}</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              (blur)="onBlur('name')"
+              class="contact__input"
+              autocomplete="name"
+            />
+            <div class="error-container">
+              <span
+                class="error-message"
+                *ngIf="nameTouched && contactForm.get('name')?.hasError('required')"
+              >
+                {{ t.errorName }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Email Feld -->
+          <div
+            class="contact__input-group"
+            [class.error]="emailTouched && contactForm.get('email')?.invalid"
+          >
+            <label for="email" class="contact__label">{{ t.emailPlaceholder }}</label>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              (blur)="onBlur('email')"
+              class="contact__input"
+              autocomplete="email"
+            />
+            <div class="error-container">
+              <span
+                class="error-message"
+                *ngIf="emailTouched && contactForm.get('email')?.hasError('required')"
+              >
+                {{ t.errorEmail }}
+              </span>
+              <span
+                class="error-message"
+                *ngIf="emailTouched && contactForm.get('email')?.hasError('email')"
+              >
+                {{ t.errorEmail }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message Feld -->
+        <div
+          class="contact__input-group"
+          [class.error]="messageTouched && contactForm.get('message')?.invalid"
+        >
+          <label for="message" class="contact__label">{{ t.messagePlaceholder }}</label>
+          <textarea
+            id="message"
+            rows="5"
+            formControlName="message"
+            (blur)="onBlur('message')"
+            class="contact__textarea"
+          ></textarea>
+          <div class="error-container">
+            <span
+              class="error-message"
+              *ngIf="messageTouched && contactForm.get('message')?.invalid"
+            >
+              {{ t.errorMessage }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Footer / Checkbox & Button -->
+        <div class="contact__form-footer">
+          <label class="contact__checkbox-label">
+            <input type="checkbox" formControlName="privacy" class="custom-checkbox-input" />
+            <span
+              class="custom-checkbox-box"
+              [class.checked]="contactForm.get('privacy')?.value"
+            ></span>
+            <span
+              >{{ t.privacyText }}<a href="/privacy" target="_blank">{{ t.privacyLink }}</a
+              >{{ t.privacyEnd }}</span
+            >
+          </label>
+
+          <button
+            type="submit"
+            class="contact__submit-btn"
+            [disabled]="contactForm.invalid"
+            [class.active]="contactForm.valid"
+          >
+            {{ t.sendBtn }}
+          </button>
+        </div>
+
+        <!-- Feedback nach Absenden -->
+        <div class="contact__feedback" *ngIf="submitSuccess">
+          <p>{{ t.successMessage }}</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
