@@ -201,7 +201,6 @@
 
 .hero {
     position: relative;
-    // ... dein restlicher Code für .hero bleibt wie er ist ...
 }
 
 .hero__image-col {
@@ -214,7 +213,7 @@
 
 .hero__blob-box {
     position: absolute;
-    bottom: -90px; // Schiebt das Ganze weiter nach unten an die Nav-Leiste
+    bottom: -90px;
     left: -140px; 
     width: 580px;
     height: 616px;
@@ -222,7 +221,7 @@
     justify-content: center;
     align-items: center;
     overflow: visible;
-    transform: rotate(-45deg); // Vorzeichen geändert, falls es in die falsche Richtung ging
+    transform: rotate(-45deg);
     z-index: 1;
 
     @media (max-width: 768px) {
@@ -258,7 +257,7 @@
         height: 90%;
         object-fit: cover;
         object-position: center 18%;
-        transform: rotate(45deg); // Entgegengesetzt gedreht, damit dein Kopf wieder gerade steht (-45° wurde zu 45°)
+        transform: rotate(45deg);
     }
 
     &:hover {
@@ -318,7 +317,7 @@
     width: 100%;
     box-sizing: border-box;
 
-    // Der innere Container, der die Breite begrenzt
+  
     .hero__nav-container {
         max-width: 1214px;
         margin: 0 auto;
