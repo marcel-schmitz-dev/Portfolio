@@ -3,11 +3,12 @@ import { WhyMe } from '../why-me/why-me';
 import { Skills } from '../skills/skills';
 import { Projects } from '../projects/projects';
 import { ContactMe } from '../contact-me/contact-me';
+import { Footer } from '../footer/footer'; 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [WhyMe, Skills, Projects, ContactMe],
+  imports: [WhyMe, Skills, Projects, ContactMe, Footer],
   styleUrl: './home.scss',
   templateUrl: './home.html',
 })

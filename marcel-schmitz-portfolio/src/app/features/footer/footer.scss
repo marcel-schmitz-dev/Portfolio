@@ -1,0 +1,144 @@
+.footer {
+  background-color: #89BCD9;;
+  padding: 40px 20px;
+  width: 100%;
+
+  &__container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__legal-link {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px;
+    color: #F8F5EC;
+    text-decoration: none;
+    font-weight: 400;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__copyright {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #262E34;
+    margin: 0;
+    width: 202.49px;
+  }
+
+  &__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    gap: 4px;
+  }
+
+  &__logo {
+    width: 48px;
+    height: 30px;
+    object-fit: contain;
+  }
+
+  &__logo-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-name-anta {
+    font-family: 'Anta', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #F8F5EC;
+  }
+
+  .footer-dev-josefin {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    color: #262E34;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__social-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 29.54px;
+  }
+
+  &__social-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &__social-default {
+    opacity: 1;
+  }
+
+  &__social-hover {
+    opacity: 0;
+  }
+
+  &__social-link:hover {
+    .__social-default,
+    .footer__social-default {
+      opacity: 0;
+    }
+    .__social-hover,
+    .footer__social-hover {
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer__container {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .footer__left {
+    align-items: center;
+  }
+}
