@@ -1,6 +1,30 @@
 <main class="home">
   <section class="hero" id="home">
-    <div class="hero__top-logo-block">
+    <!-- Mobiler Header (wird nur <= 900px angezeigt) -->
+    <div class="hero__mobile-header">
+      <div class="hero__top-logo-block">
+        <img src="./assets/logo.png" alt="Logo" class="hero__top-logo-img" />
+        <div class="hero__top-logo-text">
+          <span class="name-anta">M.Schmitz</span>
+          <span class="dev-josefin">developer</span>
+        </div>
+      </div>
+
+      <!-- Burger / X Menü Button -->
+      <button
+        class="hero__burger-btn"
+        (click)="toggleMenu()"
+        [class.is-open]="isMenuOpen"
+        aria-label="Menu"
+      >
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </div>
+
+    <!-- Desktop Logo (wird bei Mobile ausgeblendet) -->
+    <div class="hero__top-logo-block desktop-only">
       <img src="./assets/logo.png" alt="Logo" class="hero__top-logo-img" />
       <div class="hero__top-logo-text">
         <span class="name-anta">M.Schmitz</span>
@@ -8,7 +32,8 @@
       </div>
     </div>
 
-    <div class="hero__socials-vertical">
+    <!-- Desktop Socials (wird bei Mobile ausgeblendet) -->
+    <div class="hero__socials-vertical desktop-only">
       <a href="mailto:m.schmitz.dev@gmail.com" aria-label="Email" class="social-link">
         <img src="./assets/Mail-def.webp" alt="Email" class="social-img social-default" />
         <img src="./assets/email-hover.png" alt="Email Hover" class="social-img social-hover" />
@@ -35,6 +60,22 @@
           class="social-img social-hover"
         />
       </a>
+    </div>
+
+    <!-- Mobile Overlay Menü -->
+    <div class="mobile-menu-overlay" [class.is-open]="isMenuOpen">
+      <nav class="mobile-menu-nav">
+        <a (click)="scrollToSection('why-me')">{{ t.whyMe }}</a>
+        <a (click)="scrollToSection('skills')">{{ t.skills }}</a>
+        <a (click)="scrollToSection('projects')">{{ t.projects }}</a>
+        <a (click)="scrollToSection('contact')">{{ t.contact }}</a>
+
+        <div class="mobile-language-switch">
+          <span [class.active]="currentLang === 'de'" (click)="switchLang('de')">DE</span>
+          <span class="separator">/</span>
+          <span [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</span>
+        </div>
+      </nav>
     </div>
 
     <div class="hero__container">

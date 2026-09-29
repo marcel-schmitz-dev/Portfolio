@@ -15,6 +15,7 @@ import { Footer } from '../../shared/components/footer/footer';
 })
 export class Home {
   currentLang: 'de' | 'en' = 'en';
+  isMenuOpen = false;
 
   translations = {
     de: {
@@ -39,5 +40,21 @@ export class Home {
 
   toggleLanguage(): void {
     this.currentLang = this.currentLang === 'de' ? 'en' : 'de';
+  }
+
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  scrollToSection(sectionId: string): void {
+    this.isMenuOpen = false;
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  switchLang(lang: 'de' | 'en'): void {
+    this.currentLang = lang;
   }
 }
