@@ -65,7 +65,6 @@
     }
 }
 
-/* Mobiler Header (Standardmäßig versteckt auf Desktop) */
 .hero__mobile-header {
     display: none;
     width: 100%;
@@ -105,7 +104,6 @@
     }
 }
 
-/* Burger / X Icon Button */
 .hero__burger-btn {
     background: none;
     border: none;
@@ -139,14 +137,12 @@
     }
 }
 
-/* Desktop Logo & Socials ausblenden bei Mobile */
 @media (max-width: 900px) {
     .desktop-only {
         display: none !important;
     }
 }
 
-/* Desktop Styles für Logo und Socials */
 .hero__top-logo-block:not(.hero__mobile-header .hero__top-logo-block) {
     position: absolute;
     top: 121px;
@@ -228,7 +224,6 @@
     }
 }
 
-/* Overlay Menü (Ovale Form nach Figma Vorlage) */
 .mobile-menu-overlay {
     position: fixed;
     top: 0;
@@ -245,7 +240,6 @@
         right: 0;
     }
 
-    /* Das ovale Design analog zu Figma */
     &::before {
         content: '';
         position: absolute;
@@ -393,14 +387,14 @@
 
         .hero__blob {
             transform: none !important;
-            overflow: visible; /* Erlaubt dem Kopf, aus dem Blob herauszuragen */
+            overflow: visible;
         }
 
         .hero__avatar {
-            width: 100% !important;   /* Bild etwas größer skalieren, damit die Arme voll reinpassen */
+            width: 100% !important;
             height: 125% !important;
             object-fit: cover !important;
-            object-position: center 15% !important; /* Verschiebt das Bild nach oben (je kleiner der Prozentwert, desto weiter wandert es nach oben) */
+            object-position: center 15% !important;
             transform: none !important;
             border-radius: 50% !important;
         }
