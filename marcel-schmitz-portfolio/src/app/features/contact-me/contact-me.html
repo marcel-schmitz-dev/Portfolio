@@ -30,7 +30,7 @@
 
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact__form">
         <div class="contact__form-row">
-          <!-- Name Feld -->
+
           <div
             class="contact__input-group"
             [class.error]="nameTouched && contactForm.get('name')?.invalid"
@@ -47,7 +47,11 @@
             <div class="error-container">
               <span
                 class="error-message"
-                *ngIf="nameTouched && contactForm.get('name')?.hasError('required')"
+                *ngIf="
+                  nameTouched &&
+                  (contactForm.get('name')?.hasError('required') ||
+                    contactForm.get('name')?.hasError('invalidName'))
+                "
               >
                 {{ t.errorName }}
               </span>
@@ -70,13 +74,11 @@
             <div class="error-container">
               <span
                 class="error-message"
-                *ngIf="emailTouched && contactForm.get('email')?.hasError('required')"
-              >
-                {{ t.errorEmail }}
-              </span>
-              <span
-                class="error-message"
-                *ngIf="emailTouched && contactForm.get('email')?.hasError('email')"
+                *ngIf="
+                  emailTouched &&
+                  (contactForm.get('email')?.hasError('required') ||
+                    contactForm.get('email')?.hasError('email'))
+                "
               >
                 {{ t.errorEmail }}
               </span>
@@ -99,7 +101,11 @@
           <div class="error-container">
             <span
               class="error-message"
-              *ngIf="messageTouched && contactForm.get('message')?.invalid"
+              *ngIf="
+                messageTouched &&
+                (contactForm.get('message')?.hasError('required') ||
+                  contactForm.get('message')?.hasError('invalidMessage'))
+              "
             >
               {{ t.errorMessage }}
             </span>

@@ -1,6 +1,26 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+
+export function strictNameValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+    if (!value) return null;
+    const nameRegex = /^[a-zA-ZäöüÄÖÜß\s-]+$/;
+    const isValid = nameRegex.test(value) && value.trim().length > 0;
+    return isValid ? null : { invalidName: true };
+  };
+}
+
+export function strictMessageValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+    if (!value) return null;
+    const isLongEnough = value.trim().length >= 10;
+    const hasLetters = /[a-zA-ZäöüÄÖÜß]{3,}/.test(value);
+    return (isLongEnough && hasLetters) ? null : { invalidMessage: true };
+  };
+}
 
 @Component({
   selector: 'app-contact-me',
@@ -34,9 +54,9 @@ export class ContactMe {
       privacyEnd: ' gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.',
       sendBtn: 'Senden',
       successMessage: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.',
-      errorName: 'Bitte geben Sie Ihren Namen ein.',
-      errorEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
-      errorMessage: 'Bitte geben Sie eine Nachricht ein (min. 10 Zeichen).'
+      errorName: 'Bitte geben Sie einen gültigen Namen ein (keine Zahlen/Sonderzeichen).',
+      errorEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@domain.de).',
+      errorMessage: 'Bitte geben Sie eine gültige Nachricht ein (min. 10 Zeichen, echter Text).'
     },
     en: {
       title: 'Contact me',
@@ -51,17 +71,17 @@ export class ContactMe {
       privacyEnd: ' and agree to the processing of my data as outlined.',
       sendBtn: 'Send',
       successMessage: 'Thank you! Your message has been sent successfully.',
-      errorName: 'Please enter your name.',
-      errorEmail: 'Please enter a valid email address.',
-      errorMessage: 'Please enter a message (min. 10 characters).'
+      errorName: 'Please enter a valid name (no numbers or special characters).',
+      errorEmail: 'Please enter a valid email address (e.g., name@domain.com).',
+      errorMessage: 'Please enter a valid message (min. 10 chars, actual text).'
     }
   };
 
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required, strictNameValidator()]],
       email: ['', [Validators.required, Validators.email]],
-      message: ['', [Validators.required, Validators.minLength(10)]],
+      message: ['', [Validators.required, strictMessageValidator()]],
       privacy: [false, [Validators.requiredTrue]]
     });
   }
