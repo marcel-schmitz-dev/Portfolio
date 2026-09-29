@@ -1,5 +1,5 @@
 <main class="home">
-  <section class="hero">
+  <section class="hero" id="home">
     <div class="hero__top-logo-block">
       <img src="./assets/logo.png" alt="Logo" class="hero__top-logo-img" />
       <div class="hero__top-logo-text">
@@ -62,43 +62,7 @@
     </a>
   </section>
 
-  <nav class="hero__nav">
-    <div class="hero__nav-container">
-      <div class="hero__nav-logo-block">
-        <img src="./assets/logoBlack.webp" alt="Logo" class="hero__nav-logo-img" />
-        <div class="hero__nav-logo-text">
-          <span class="name-anta">M.Schmitz</span>
-          <span class="dev-josefin">developer</span>
-        </div>
-      </div>
-      <ul class="hero__nav-links">
-        <li>
-          <a href="#why-me">{{ t.whyMe }}</a>
-        </li>
-        <li>
-          <a href="#skills">{{ t.skills }}</a>
-        </li>
-        <li>
-          <a href="#projects">{{ t.projects }}</a>
-        </li>
-        <li>
-          <a href="#contact">{{ t.contact }}</a>
-        </li>
-      </ul>
-
-      <div class="hero__nav-lang">
-        <button type="button" class="lang-btn" (click)="toggleLanguage()">
-          <img
-            [src]="currentLang === 'de' ? './assets/active-DE.png' : './assets/active-EN.png'"
-            [alt]="currentLang.toUpperCase()"
-            class="lang-img"
-          />
-        </button>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Restlicher Content -->
+  <app-header [currentLang]="currentLang" [t]="t" (langChange)="toggleLanguage()"> </app-header>
   <app-why-me [lang]="currentLang" />
   <app-skills [lang]="currentLang" />
   <app-projects [lang]="currentLang" />

@@ -1,0 +1,63 @@
+.legal-page {
+  background-color: #262E34; // Dunkler Hintergrund gemäß Figma
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.legal-content {
+  padding: 60px 20px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.legal-container {
+  max-width: 1032px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.legal-title {
+  font-family: 'Anta', sans-serif;
+  font-size: 54px; // Exakter Wert aus Figma
+  font-weight: 400;
+  line-height: 120%;
+  color: #89BCD9; // Hellblaues Design aus Figma
+  margin-bottom: 20px;
+}
+
+.legal-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  h2 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 24px; // Überschriften (z.B. Imprint)
+    font-weight: 700;
+    line-height: 120%;
+    color: #89BCD9;
+    margin: 0;
+  }
+
+  p, ul {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px; // Fließtext
+    font-weight: 400;
+    line-height: 120%;
+    color: #F8F5EC; // Creme-weiß/heller Text
+    margin: 0;
+  }
+
+  ul {
+    padding-left: 20px;
+  }
+}
+
+.legal-date {
+  margin-top: 10px;
+  font-style: italic;
+}
