@@ -58,13 +58,13 @@
             .name-anta { 
                 font-family: 'Anta', sans-serif;
                 font-size: 14px;
-                color: #F8F5EC; /* Aus Figma übernommen */
+                color: #F8F5EC;
             }
             
             .dev-josefin { 
                 font-family: 'Josefin Sans', sans-serif;
                 font-size: 14px;
-                color: #262E34; /* Aus Figma übernommen */
+                color: #262E34;
             }
         }
     }
@@ -88,6 +88,7 @@
             padding: 4px 8px;
             text-align: center;
             white-space: nowrap;
+            cursor: pointer;
             transition: color 0.2s ease, opacity 0.2s ease;
 
             &:hover {

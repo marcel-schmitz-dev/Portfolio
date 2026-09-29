@@ -16,7 +16,6 @@ export class ContactMe {
   isSubmitted = false;
   submitSuccess = false;
 
-  // Touch-Zustände für das onBlur-Handling im HTML
   nameTouched = false;
   emailTouched = false;
   messageTouched = false;
@@ -71,7 +70,6 @@ export class ContactMe {
     return this.translations[this.lang];
   }
 
-  // Wird im HTML beim Verlassen (Blur) der Felder aufgerufen
   onBlur(field: string) {
     if (field === 'name') this.nameTouched = true;
     if (field === 'email') this.emailTouched = true;
@@ -79,7 +77,6 @@ export class ContactMe {
   }
 
   onSubmit() {
-    // Alle Felder als berührt markieren, damit Fehler beim Klick auf Senden sichtbar werden
     this.nameTouched = true;
     this.emailTouched = true;
     this.messageTouched = true;

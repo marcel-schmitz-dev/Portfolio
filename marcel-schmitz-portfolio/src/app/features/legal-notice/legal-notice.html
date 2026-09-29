@@ -1,95 +1,54 @@
 <main class="legal-page">
-  <!-- Wiederverwendbarer Header -->
   <app-header [currentLang]="currentLang" [t]="t" (langChange)="toggleLanguage()"> </app-header>
 
-  <!-- Legal Notice Content Area -->
   <section class="legal-content">
     <div class="legal-container">
-      <h1 class="legal-title">Legal Notice</h1>
+      <h1 class="legal-title">{{ t.legalTitle }}</h1>
 
       <div class="legal-block">
-        <h2>Imprint</h2>
+        <h2>{{ t.imprint }}</h2>
         <ul>
-          <li>[Student Names List]</li>
-          <li>[Address of the JOIN operator - e.g. one of the students]</li>
-          <li>[Postcode and city]</li>
+          <li>Marcel Schmitz</li>
+          <li>[Deine Straße und Hausnummer]</li>
+          <li>[Deine PLZ und Ort]</li>
         </ul>
-        <p><strong>Exploring the Board</strong><br />Email: [Email]</p>
+        <p><strong>Portfolio Website</strong><br />Email: m.schmitz.dev@gmail.com</p>
       </div>
 
       <div class="legal-block">
-        <h2>Acceptance of terms</h2>
-        <p>
-          By accessing and using Portfolio (Product), you acknowledge and agree to the following
-          terms and conditions, and any policies, guidelines, or amendments thereto that may be
-          presented to you from time to time. We, the listed students, may update or change the
-          terms and conditions from time to time without notice.
-        </p>
+        <h2>{{ t.acceptanceTitle }}</h2>
+        <p>{{ t.acceptanceText }}</p>
       </div>
 
       <div class="legal-block">
-        <h2>Scope and ownership of the product</h2>
-        <p>
-          Portfolio has been developed as part of a student group project in a web development
-          bootcamp at the Developer Akademie GmbH. It has an educational purpose and is not intended
-          for extensive personal & business usage. As such, we cannot guarantee consistent
-          availability, reliability, accuracy, or any other aspect of quality regarding this
-          Product.
-        </p>
-        <p>
-          The design of Portfolio is owned by the Developer Akademie GmbH. Unauthorized use,
-          reproduction, modification, distribution, or replication of the design is strictly
-          prohibited.
-        </p>
+        <h2>{{ t.scopeTitle }}</h2>
+        <p>{{ t.scopeText1 }}</p>
+        <p>{{ t.scopeText2 }}</p>
       </div>
 
       <div class="legal-block">
-        <h2>Proprietary rights</h2>
-        <p>
-          Aside from the design owned by Developer Akademie GmbH, we, the listed students, retain
-          all proprietary rights in Portfolio, including any associated copyrighted material,
-          trademarks, and other proprietary information.
-        </p>
+        <h2>{{ t.rightsTitle }}</h2>
+        <p>{{ t.rightsText }}</p>
       </div>
 
       <div class="legal-block">
-        <h2>Use of the product</h2>
-        <p>
-          Portfolio is intended to be used for lawful purposes only, in accordance with all
-          applicable laws and regulations. Any use of Portfolio for illegal activities, or to
-          harass, harm, threaten, or intimidate another person, is strictly prohibited. You are
-          solely responsible for your interactions with other users of Portfolio.
-        </p>
+        <h2>{{ t.useTitle }}</h2>
+        <p>{{ t.useText }}</p>
       </div>
 
       <div class="legal-block">
-        <h2>Disclaimer of warranties and limitation of liability</h2>
-        <p>
-          Portfolio is provided "as is" without warranty of any kind, whether express or implied,
-          including but not limited to the implied warranties of merchantability, fitness for a
-          particular purpose, and non-infringement. In no event will we, the listed students, or the
-          Developer Akademie, be liable for any direct, indirect, incidental, special, consequential
-          or exemplary damages, including but not limited to, damages for loss of profits, goodwill,
-          use, data, or other intangible losses, even if we have been advised of the possibility of
-          such damages, arising out of or in connection with the use or performance of Portfolio.
-        </p>
+        <h2>{{ t.disclaimerTitle }}</h2>
+        <p>{{ t.disclaimerText }}</p>
       </div>
 
       <div class="legal-block">
-        <h2>Indemnity</h2>
-        <p>
-          You agree to indemnify, defend and hold harmless us, the listed students, the Developer
-          Akademie, and our affiliates, partners, officers, directors, agents, and employees, from
-          and against any claim, demand, loss, damage, cost, or liability (including reasonable
-          legal fees) arising out of or relating to your use of Portfolio and/or your breach of this
-          Legal Notice.
-        </p>
-        <p>For any questions or notices, please contact us at [Contact Email].</p>
-        <p class="legal-date">Date: July 26, 2025</p>
+        <h2>{{ t.indemnityTitle }}</h2>
+        <p>{{ t.indemnityText }}</p>
+        <p>{{ t.questions }} m.schmitz.dev@gmail.com.</p>
+        <p class="legal-date">{{ t.date }}</p>
       </div>
     </div>
   </section>
 
-  <!-- Wiederverwendbarer Footer -->
-  <app-footer></app-footer>
+  <app-footer [lang]="currentLang"></app-footer>
 </main>

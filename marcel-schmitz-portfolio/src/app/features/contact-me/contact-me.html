@@ -1,5 +1,4 @@
 <section id="contact" class="content-section contact-section">
-  <!-- Scroll to Top Arrow (oben rechts in der Section platziert) -->
   <a href="#projects" class="contact__scroll-top" aria-label="Nach oben">
     <img src="./assets/contact-me/arrow-up.png" alt="Scroll Up" class="arrow-img arrow-default" />
     <img
@@ -13,7 +12,6 @@
     <h2 class="contact__title">{{ t.title }}</h2>
 
     <div class="contact__content-wrapper">
-      <!-- Oben: Linke Spalte (Text) & Rechte Spalte (Kontaktdaten) -->
       <div class="contact__top-row">
         <p class="contact__description">
           {{ t.description }}
@@ -21,7 +19,7 @@
         <div class="contact__details">
           <div class="contact__detail-item">
             <img src="./assets/contact-me/email.png" alt="Email" class="contact__icon" />
-            <span>{{ t.emailLabel }} fohrer.developer@gmail.com</span>
+            <span>{{ t.emailLabel }} m.schmitz.dev@gmail.com</span>
           </div>
           <div class="contact__detail-item">
             <img src="./assets/contact-me/phone.png" alt="Phone" class="contact__icon" />
@@ -30,7 +28,6 @@
         </div>
       </div>
 
-      <!-- Darunter: Das Formular -->
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact__form">
         <div class="contact__form-row">
           <!-- Name Feld -->
@@ -57,7 +54,6 @@
             </div>
           </div>
 
-          <!-- Email Feld -->
           <div
             class="contact__input-group"
             [class.error]="emailTouched && contactForm.get('email')?.invalid"
@@ -88,7 +84,6 @@
           </div>
         </div>
 
-        <!-- Message Feld -->
         <div
           class="contact__input-group"
           [class.error]="messageTouched && contactForm.get('message')?.invalid"
@@ -111,14 +106,20 @@
           </div>
         </div>
 
-        <!-- Footer / Checkbox & Button -->
         <div class="contact__form-footer">
           <label class="contact__checkbox-label">
             <input type="checkbox" formControlName="privacy" class="custom-checkbox-input" />
-            <span
-              class="custom-checkbox-box"
-              [class.checked]="contactForm.get('privacy')?.value"
-            ></span>
+            <span class="custom-checkbox-box" [class.checked]="contactForm.get('privacy')?.value">
+              <img
+                [src]="
+                  contactForm.get('privacy')?.value
+                    ? './assets/contact-me/check-box.png'
+                    : './assets/contact-me/checkbox-empty.png'
+                "
+                alt="Checkbox"
+                class="checkbox-img"
+              />
+            </span>
             <span
               >{{ t.privacyText }}<a href="/privacy" target="_blank">{{ t.privacyLink }}</a
               >{{ t.privacyEnd }}</span
@@ -135,7 +136,6 @@
           </button>
         </div>
 
-        <!-- Feedback nach Absenden -->
         <div class="contact__feedback" *ngIf="submitSuccess">
           <p>{{ t.successMessage }}</p>
         </div>

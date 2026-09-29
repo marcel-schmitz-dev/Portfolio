@@ -13,16 +13,16 @@
 
     <ul class="hero__nav-links">
       <li>
-        <a routerLink="/" fragment="why-me">{{ t.whyMe }}</a>
+        <a (click)="navigateToSection('why-me')" class="nav-link">{{ t.whyMe }}</a>
       </li>
       <li>
-        <a routerLink="/" fragment="skills">{{ t.skills }}</a>
+        <a (click)="navigateToSection('skills')" class="nav-link">{{ t.skills }}</a>
       </li>
       <li>
-        <a routerLink="/" fragment="projects">{{ t.projects }}</a>
+        <a (click)="navigateToSection('projects')" class="nav-link">{{ t.projects }}</a>
       </li>
       <li>
-        <a routerLink="/" fragment="contact">{{ t.contact }}</a>
+        <a (click)="navigateToSection('contact')" class="nav-link">{{ t.contact }}</a>
       </li>
     </ul>
 
