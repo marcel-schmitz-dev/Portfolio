@@ -1,25 +1,26 @@
 .why-me-section {
-  padding: 80px 20px;
+  padding: clamp(3rem, 6vw, 5rem) 1.25rem;
   max-width: 1200px;
   margin: 0 auto;
 
   .section-title {
     font-family: 'Anta', sans-serif;
-    font-size: 60px;
+    font-size: clamp(2rem, 8vw, 3.75rem);
     font-weight: 400;
     line-height: 120%;
     text-align: center;
     color: var(--color-primary, #fff);
-    margin-bottom: 48px;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
   }
 }
 
 .why-me-container {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 2rem;
+  align-items: center;
 
-  @media (min-width: 768px) {
+  @media (min-width: 900px) {
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
@@ -30,24 +31,30 @@
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  @media (min-width: 900px) {
+    justify-content: flex-start;
+  }
 
   .location-box {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 1rem;
 
     .location-img {
-      width: 33.31px;
-      height: 41px;
+      width: 2.08rem;
+      height: 2.56rem;
       object-fit: contain;
     }
 
     .location-text {
       font-family: 'Josefin Sans', sans-serif;
       font-weight: 700;
-      font-size: 30px;
+      font-size: clamp(1.125rem, 3.5vw, 1.875rem);
       line-height: 120%;
       color: #fff;
+      text-align: left;
 
       .highlight {
         color: #89BCD9;
@@ -60,14 +67,20 @@
   flex: 1.2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
+  align-items: center;
+  gap: 1.5rem;
   width: 100%;
+  text-align: center;
+
+  @media (min-width: 900px) {
+    align-items: flex-start;
+    text-align: left;
+  }
 
   .why-me__description {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
-    font-size: 18px;
+    font-size: clamp(1rem, 2vw, 1.125rem);
     line-height: 120%;
     color: #F8F5EC;
     margin: 0;
@@ -77,21 +90,29 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 48px;
-    padding: 13px 30px;
-    border-radius: 30px;
+    height: 3rem;
+    padding: 0.81rem 1.875rem;
+    border-radius: 1.875rem;
     border: 1px solid #89BCD9;
     color: #89BCD9;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
     text-decoration: none;
     transition: all 0.2s ease;
-    align-self: flex-end;
+    align-self: center;
+
+    @media (max-width: 900px) {
+      display: none !important; 
+    }
+
+    @media (min-width: 900px) {
+      align-self: flex-end;
+    }
 
     &:hover {
-      background-color: rgba(137, 188, 217, 0.07); // Angepasst wie bei den Projekten
-      color: #89BCD9; // Farbe bleibt schön erhalten
+      background-color: rgba(137, 188, 217, 0.07);
+      color: #89BCD9;
       border-color: #89BCD9;
     }
   }
