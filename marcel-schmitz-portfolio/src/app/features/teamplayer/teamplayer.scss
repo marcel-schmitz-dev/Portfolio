@@ -1,0 +1,136 @@
+.teamplayer {
+  padding: 80px 40px;
+  background-color: var(--color-bg);
+  text-align: center;
+
+  &__title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 120%;
+    color: var(--color-primary);
+    margin: 0 0 64px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+}
+
+.review {
+  box-sizing: border-box;
+  position: relative;
+  flex: none;
+  width: min(400px, calc((100% - 20px) / 3));
+  aspect-ratio: 1;
+  min-height: 0;
+  padding: 0 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--color-secondary);
+  isolation: isolate;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    transition: opacity 0.3s ease;
+  }
+
+    &:hover::before {
+    opacity: 0;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &::before {
+    background-image: url('/assets/teamplayer/references-blob.png');
+  }
+
+  &::after {
+    background-image: url('/assets/teamplayer/references-hover.png');
+    opacity: 0;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 120%;
+  }
+
+  &__project {
+    margin: 4px 0 0;
+    font-size: 16px;
+    line-height: 120%;
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+  }
+
+  &__quote {
+    margin: 24px 0 32px;
+    max-width: 292px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 120%;
+  }
+
+  &__linkedin {
+    font-size: 16px;
+    line-height: 120%;
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 1100px) {
+  .teamplayer__list {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .review {
+    width: min(100%, 380px);
+  }
+}
+
+@media (max-width: 480px) {
+  .teamplayer {
+    padding: 56px 16px;
+
+    &__title {
+      font-size: 24px;
+    }
+  }
+
+  .review {
+    padding: 0 10%;
+
+    &__quote {
+      font-size: 16px;
+    }
+  }
+}

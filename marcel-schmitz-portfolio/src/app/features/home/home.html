@@ -1,6 +1,5 @@
 <main class="home">
   <section class="hero" id="home">
-    <!-- Mobiler Header (wird nur <= 900px angezeigt) -->
     <div class="hero__mobile-header">
       <div class="hero__top-logo-block">
         <img src="./assets/logo.png" alt="Logo" class="hero__top-logo-img" />
@@ -10,7 +9,6 @@
         </div>
       </div>
 
-      <!-- Burger / X Menü Button -->
       <button
         class="hero__burger-btn"
         (click)="toggleMenu()"
@@ -23,7 +21,6 @@
       </button>
     </div>
 
-    <!-- Desktop Logo (wird bei Mobile ausgeblendet) -->
     <div class="hero__top-logo-block desktop-only">
       <img src="./assets/logo.png" alt="Logo" class="hero__top-logo-img" />
       <div class="hero__top-logo-text">
@@ -32,7 +29,6 @@
       </div>
     </div>
 
-    <!-- Desktop Socials (wird bei Mobile ausgeblendet) -->
     <div class="hero__socials-vertical desktop-only">
       <a href="mailto:m.schmitz.dev@gmail.com" aria-label="Email" class="social-link">
         <img src="./assets/Mail-def.webp" alt="Email" class="social-img social-default" />
@@ -62,7 +58,6 @@
       </a>
     </div>
 
-    <!-- Mobile Overlay Menü -->
     <div class="mobile-menu-overlay" [class.is-open]="isMenuOpen">
       <nav class="mobile-menu-nav">
         <a (click)="scrollToSection('why-me')">{{ t.whyMe }}</a>
@@ -103,6 +98,7 @@
   <app-why-me [lang]="currentLang" />
   <app-skills [lang]="currentLang" />
   <app-projects [lang]="currentLang" />
+  <app-teamplayer [lang]="currentLang" />
   <app-contact-me [lang]="currentLang" />
   <app-footer [lang]="currentLang"></app-footer>
 </main>

@@ -1,5 +1,5 @@
 .legal-page {
-  background-color: #262E34; // Dunkler Hintergrund gemäß Figma
+  background-color: #262E34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,10 +22,10 @@
 
 .legal-title {
   font-family: 'Anta', sans-serif;
-  font-size: 54px; // Exakter Wert aus Figma
+  font-size: 54px;
   font-weight: 400;
   line-height: 120%;
-  color: #89BCD9; // Hellblaues Design aus Figma
+  color: #89BCD9;
   margin-bottom: 20px;
 }
 
@@ -36,7 +36,7 @@
 
   h2 {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 24px; // Überschriften (z.B. Imprint)
+    font-size: 24px;
     font-weight: 700;
     line-height: 120%;
     color: #89BCD9;
@@ -45,10 +45,10 @@
 
   p, ul {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 16px; // Fließtext
+    font-size: 16px;
     font-weight: 400;
     line-height: 120%;
-    color: #F8F5EC; // Creme-weiß/heller Text
+    color: #F8F5EC;
     margin: 0;
   }
 

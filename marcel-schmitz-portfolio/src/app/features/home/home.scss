@@ -98,7 +98,7 @@
             display: flex;
             flex-direction: column;
             line-height: 1.1;
-            font-size: 11px;
+            font-size: 12px;
             color: var(--color-secondary);
         }
     }
@@ -147,8 +147,8 @@
     position: absolute;
     top: 121px;
     left: clamp(650px, 74vw, 892px);
-    width: 66px;
-    height: 73px;
+    width: auto;          // statt 66px, sonst wird der Text abgeschnitten/umbrochen
+    height: auto;         // statt 73px
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,6 +163,20 @@
         cursor: pointer;
         transition: transform 0.4s ease-in-out;
         &:hover { transform: rotateY(45deg); }
+    }
+
+    // NEU: Texte untereinander
+    .hero__top-logo-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        line-height: 1.1;
+        white-space: nowrap;
+
+        .name-anta,
+        .dev-josefin {
+            display: block;
+        }
     }
 }
 
@@ -365,7 +379,7 @@
         position: relative;
         z-index: 2;
         width: 90%;
-        height: 90%;
+        height: 100%;
         object-fit: cover;
         object-position: center 18%;
         transform: rotate(45deg);

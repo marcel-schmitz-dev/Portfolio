@@ -1,0 +1,18 @@
+<section class="teamplayer" id="teamplayer">
+  <h2 class="teamplayer__title">{{ t.title }}</h2>
+
+  <div class="teamplayer__list">
+    @for (review of reviews; track $index) {
+      <article class="review">
+        <h3 class="review__name">{{ review.name }}</h3>
+        <p class="review__project">
+          {{ t.project }} <a [href]="review.projectLink">{{ review.project }}</a>
+        </p>
+        <blockquote class="review__quote">“{{ review.quote[lang] }}”</blockquote>
+        <a class="review__linkedin" [href]="review.linkedin" target="_blank" rel="noopener">
+          {{ t.linkedin }}
+        </a>
+      </article>
+    }
+  </div>
+</section>

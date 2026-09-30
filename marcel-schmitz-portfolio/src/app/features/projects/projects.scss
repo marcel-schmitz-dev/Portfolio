@@ -94,10 +94,10 @@
         align-items: flex-start;
 
         .info-dot-img {
-            width: 29px;  // Passe die Größe bei Bedarf an
+            width: 29px;
             height: 26px;
             object-fit: contain;
-            margin-top: 6px; // Richtet das Bild optisch perfekt an der ersten Textzeile aus
+            margin-top: 6px;
             flex-shrink: 0;
         }
 
