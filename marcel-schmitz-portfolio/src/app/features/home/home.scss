@@ -147,8 +147,8 @@
     position: absolute;
     top: 121px;
     left: clamp(650px, 74vw, 892px);
-    width: auto;          // statt 66px, sonst wird der Text abgeschnitten/umbrochen
-    height: auto;         // statt 73px
+    width: auto;
+    height: auto;   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -165,7 +165,6 @@
         &:hover { transform: rotateY(45deg); }
     }
 
-    // NEU: Texte untereinander
     .hero__top-logo-text {
         display: flex;
         flex-direction: column;
@@ -443,4 +442,26 @@
     line-height: 120%;
     color: var(--color-primary);
     margin: 0 0 30px 0;
+}
+
+@media (min-width: 901px) and (max-width: 1414px) {
+  .hero {
+    min-height: 53vw;
+  }
+
+  .hero .hero__scroll {
+    top: 38vw;
+  }
+
+  .hero__image-col {
+    width: 41vw;
+    height: 43.6vw;
+  }
+
+  .hero__blob-box {
+    width: 41vw;
+    height: 43.6vw;
+    left: calc(-40px - max(0px, (100vw - 1214px) / 2));
+    bottom: -6.4vw;
+  }
 }
