@@ -9,6 +9,7 @@
             <div class="icon-wrapper">
               <img [src]="skill.icon" [alt]="skill.name" class="skill-icon" />
             </div>
+            <span class="skill-name">{{ skill.label }}</span>
           </div>
         }
       </div>
@@ -22,6 +23,7 @@
                 <div class="icon-wrapper">
                   <img [src]="item.icon" [alt]="item.name" class="skill-icon" />
                 </div>
+                <span class="learning-name">{{ item.name }}</span>
               </div>
             }
           </div>
@@ -29,5 +31,7 @@
         </div>
       </div>
     </div>
+
+    <a href="#contact" class="skills-cta">{{ t.buttonText }}</a>
   </div>
 </section>

@@ -168,6 +168,31 @@
     }
   }
 
+  .skills-cta {
+    display: none;
+
+    @media (max-width: 900px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      height: 3rem;
+      margin: 40px auto 0;
+      padding: 0.81rem 1.875rem;
+      border-radius: 1.875rem;
+      background: #89BCD9;
+      color: #252D33;
+      font-family: 'Josefin Sans', sans-serif;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: filter 0.2s ease;
+
+      &:hover {
+        filter: brightness(1.1);
+      }
+    }
+  }
+
   @media (max-width: 600px) {
     padding: 80px 20px;
 
@@ -179,6 +204,7 @@
     .skills-content-wrapper {
       gap: 40px;
     }
+
 
     .skills-grid {
       display: flex;
@@ -225,11 +251,11 @@
       }
 
       .learning-title {
-  grid-area: title;
-  text-align: center;
-  margin: 0;
-  color: #89BCD9;
-}
+        grid-area: title;
+        text-align: center;
+        margin: 0;
+        color: #89BCD9;
+      }
 
       .learning-text {
         grid-area: text;
