@@ -16,7 +16,6 @@ $bp-mobile: 600px;
     position: relative;
 
     @media (max-width: $bp-tablet) {
-        // unten genug Platz für den Pfeil (89px Höhe + Abstände)
         padding: 60px 20px 170px 20px;
     }
 
@@ -31,7 +30,6 @@ $bp-mobile: 600px;
         cursor: pointer;
         z-index: 10;
 
-        // Responsive: Pfeil zentriert unten statt oben rechts
         @media (max-width: $bp-tablet) {
             top: auto;
             right: auto;
@@ -54,7 +52,6 @@ $bp-mobile: 600px;
             opacity: 0;
         }
 
-        // Hover nur auf Desktop mit Maus, im Responsive-/Touch-Bereich kein Hover
         @media (min-width: #{$bp-tablet + 1}) and (hover: hover) {
             &:hover {
                 .arrow-default {
@@ -85,7 +82,6 @@ $bp-mobile: 600px;
         color: var(--color-primary);
         margin: 0;
 
-        // skaliert mit, aber nie kleiner als 32px
         @media (max-width: $bp-tablet) {
             font-size: clamp(32px, 6vw, 54px);
             text-align: center;
@@ -133,7 +129,6 @@ $bp-mobile: 600px;
             gap: 12px;
             flex-shrink: 0;
 
-            // Responsive: Kontaktdaten über dem Beschreibungstext
             @media (max-width: $bp-tablet) {
                 order: -1;
             }
@@ -159,7 +154,6 @@ $bp-mobile: 600px;
         }
     }
 
-    // "Let us work together!" – nur im Responsive-Bereich sichtbar
     .contact__cta {
         display: none;
         margin: 0;
