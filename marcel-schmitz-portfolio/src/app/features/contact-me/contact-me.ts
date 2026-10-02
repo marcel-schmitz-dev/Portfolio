@@ -4,11 +4,18 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractContro
 
 export function strictNameValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const value = control.value;
-    if (!value) return null;
-    const nameRegex = /^[a-zA-ZäöüÄÖÜß\s-]+$/;
-    const isValid = nameRegex.test(value) && value.trim().length > 0;
-    return isValid ? null : { invalidName: true };
+    const value = (control.value ?? '').trim();
+    if (!value) return null; // "required" übernimmt den Leer-Fall
+
+    // Nur Buchstaben (inkl. Umlaute/Akzente), getrennt durch Leerzeichen, Bindestrich oder Apostroph
+    const allowedChars = /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u;
+
+    // Mindestens 2 Wörter (Vor- und Nachname), jedes mit mind. 2 Buchstaben
+    const parts = value.split(/\s+/);
+    const hasFullName =
+      parts.length >= 2 && parts.every((p: string) => p.replace(/[-']/g, '').length >= 2);
+
+    return allowedChars.test(value) && hasFullName ? null : { invalidName: true };
   };
 }
 
@@ -54,7 +61,7 @@ export class ContactMe {
       privacyEnd: ' gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.',
       sendBtn: 'Senden',
       successMessage: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.',
-      errorName: 'Bitte geben Sie einen gültigen Namen ein (keine Zahlen/Sonderzeichen).',
+      errorName: 'Bitte gib deinen vollständigen Namen ein (Vor- und Nachname, nur Buchstaben).',
       errorEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@domain.de).',
       errorMessage: 'Bitte geben Sie eine gültige Nachricht ein (min. 10 Zeichen, echter Text).'
     },
@@ -71,7 +78,7 @@ export class ContactMe {
       privacyEnd: ' and agree to the processing of my data as outlined.',
       sendBtn: 'Send',
       successMessage: 'Thank you! Your message has been sent successfully.',
-      errorName: 'Please enter a valid name (no numbers or special characters).',
+      errorName: 'Please enter your full name (first and last name, letters only).',
       errorEmail: 'Please enter a valid email address (e.g., name@domain.com).',
       errorMessage: 'Please enter a valid message (min. 10 chars, actual text).'
     }
