@@ -39,36 +39,26 @@
   color: var(--color-secondary);
   isolation: isolate;
 
-  &::before,
-  &::after {
-    content: '';
+  &__blob {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
-    background-position: center;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    object-fit: fill;
+    pointer-events: none;
     transition: opacity 0.3s ease;
+
+    &--hover {
+      opacity: 0;
+    }
   }
 
-    &:hover::before {
+  &:hover .review__blob {
     opacity: 0;
   }
 
-  &:hover::after {
-    opacity: 1;
-  }
-
-  &::before {
-    background-image: url('/assets/teamplayer/references-blob.png');
-  }
-
-  &::after {
-    background-image: url('/assets/teamplayer/references-hover.png');
-    opacity: 0;
-  }
-
-  &:hover::after {
+  &:hover .review__blob--hover {
     opacity: 1;
   }
 
