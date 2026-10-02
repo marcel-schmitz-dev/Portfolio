@@ -4,13 +4,14 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractContro
 
 export function strictNameValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const value = (control.value ?? '').trim();
-    if (!value) return null; // "required" übernimmt den Leer-Fall
+    const raw = control.value ?? '';
+    if (!raw) return null;
 
-    // Nur Buchstaben (inkl. Umlaute/Akzente), getrennt durch Leerzeichen, Bindestrich oder Apostroph
+    const value = raw.trim();
+    if (!value) return { invalidName: true };
+
     const allowedChars = /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u;
 
-    // Mindestens 2 Wörter (Vor- und Nachname), jedes mit mind. 2 Buchstaben
     const parts = value.split(/\s+/);
     const hasFullName =
       parts.length >= 2 && parts.every((p: string) => p.replace(/[-']/g, '').length >= 2);
