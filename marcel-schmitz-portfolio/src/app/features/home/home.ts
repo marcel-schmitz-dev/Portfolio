@@ -57,5 +57,6 @@ export class Home {
 
   switchLang(lang: 'de' | 'en'): void {
     this.currentLang = lang;
+    this.isMenuOpen = false;
   }
 }
