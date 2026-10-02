@@ -1,3 +1,6 @@
+$bp-tablet: 900px;
+$bp-mobile: 600px;
+
 :host {
     display: block;
     width: 100%;
@@ -12,6 +15,11 @@
     box-sizing: border-box;
     position: relative;
 
+    @media (max-width: $bp-tablet) {
+        // unten genug Platz für den Pfeil (89px Höhe + Abstände)
+        padding: 60px 20px 170px 20px;
+    }
+
     .contact__scroll-top {
         position: absolute;
         top: 40px;
@@ -22,6 +30,15 @@
         text-decoration: none;
         cursor: pointer;
         z-index: 10;
+
+        // Responsive: Pfeil zentriert unten statt oben rechts
+        @media (max-width: $bp-tablet) {
+            top: auto;
+            right: auto;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
 
         .arrow-img {
             width: 100%;
@@ -37,12 +54,15 @@
             opacity: 0;
         }
 
-        &:hover {
-            .arrow-default {
-                opacity: 0;
-            }
-            .arrow-hover {
-                opacity: 1;
+        // Hover nur auf Desktop mit Maus, im Responsive-/Touch-Bereich kein Hover
+        @media (min-width: #{$bp-tablet + 1}) and (hover: hover) {
+            &:hover {
+                .arrow-default {
+                    opacity: 0;
+                }
+                .arrow-hover {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -51,6 +71,10 @@
         display: flex;
         flex-direction: column;
         gap: 40px;
+
+        @media (max-width: $bp-tablet) {
+            gap: 30px;
+        }
     }
 
     .contact__title {
@@ -60,12 +84,22 @@
         line-height: 120%;
         color: var(--color-primary);
         margin: 0;
+
+        // skaliert mit, aber nie kleiner als 32px
+        @media (max-width: $bp-tablet) {
+            font-size: clamp(32px, 6vw, 54px);
+            text-align: center;
+        }
     }
 
     .contact__content-wrapper {
         display: flex;
         flex-direction: column;
         gap: 50px;
+
+        @media (max-width: $bp-tablet) {
+            gap: 30px;
+        }
     }
 
     .contact__top-row {
@@ -74,7 +108,7 @@
         align-items: flex-start;
         gap: 60px;
 
-        @media (max-width: 900px) {
+        @media (max-width: $bp-tablet) {
             flex-direction: column;
             gap: 25px;
         }
@@ -87,6 +121,10 @@
             line-height: 120%;
             color: var(--color-secondary);
             margin: 0;
+
+            @media (max-width: $bp-tablet) {
+                font-size: 16px;
+            }
         }
 
         .contact__details {
@@ -94,6 +132,11 @@
             flex-direction: column;
             gap: 12px;
             flex-shrink: 0;
+
+            // Responsive: Kontaktdaten über dem Beschreibungstext
+            @media (max-width: $bp-tablet) {
+                order: -1;
+            }
 
             .contact__detail-item {
                 display: flex;
@@ -103,12 +146,32 @@
                 font-size: 18px;
                 color: var(--color-secondary);
 
+                @media (max-width: $bp-tablet) {
+                    font-size: 16px;
+                }
+
                 .contact__icon {
                     width: 21.83px;
                     height: 20px;
                     object-fit: contain;
                 }
             }
+        }
+    }
+
+    // "Let us work together!" – nur im Responsive-Bereich sichtbar
+    .contact__cta {
+        display: none;
+        margin: 0;
+        font-family: 'Josefin Sans', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 120%;
+        text-align: center;
+        color: var(--color-primary);
+
+        @media (max-width: $bp-tablet) {
+            display: block;
         }
     }
 
@@ -121,7 +184,7 @@
             display: flex;
             gap: 20px;
 
-            @media (max-width: 600px) {
+            @media (max-width: $bp-mobile) {
                 flex-direction: column;
             }
         }
@@ -137,6 +200,10 @@
                 font-size: 14px;
                 color: var(--color-primary);
                 padding-left: 12px;
+
+                @media (max-width: $bp-tablet) {
+                    font-size: 16px;
+                }
             }
 
             .contact__input,
@@ -154,7 +221,7 @@
                 transition: border-color 0.2s ease;
 
                 &:-webkit-autofill,
-                &:-webkit-autofill:hover, 
+                &:-webkit-autofill:hover,
                 &:-webkit-autofill:focus {
                     -webkit-text-fill-color: var(--color-secondary) !important;
                     -webkit-box-shadow: 0 0 0px 1000px var(--color-bg) inset !important;
@@ -183,7 +250,8 @@
             }
 
             &.error {
-                .contact__input, .contact__textarea {
+                .contact__input,
+                .contact__textarea {
                     border-color: var(--color-error);
                 }
             }
@@ -205,6 +273,10 @@
                 cursor: pointer;
                 position: relative;
 
+                @media (max-width: $bp-tablet) {
+                    font-size: 16px;
+                }
+
                 .custom-checkbox-input {
                     position: absolute;
                     opacity: 0;
@@ -223,12 +295,12 @@
                     flex-shrink: 0;
                     border: none;
 
-                .checkbox-img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
+                    .checkbox-img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
                 }
-            }
 
                 a {
                     color: var(--color-primary);
@@ -271,6 +343,7 @@
             border-radius: 8px;
             color: var(--color-done);
             font-family: 'Josefin Sans', sans-serif;
+            font-size: 16px;
             text-align: center;
         }
     }

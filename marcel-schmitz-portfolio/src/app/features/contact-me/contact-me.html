@@ -28,9 +28,10 @@
         </div>
       </div>
 
+      <p class="contact__cta">{{ t.cta }}</p>
+
       <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact__form">
         <div class="contact__form-row">
-
           <div
             class="contact__input-group"
             [class.error]="nameTouched && contactForm.get('name')?.invalid"
