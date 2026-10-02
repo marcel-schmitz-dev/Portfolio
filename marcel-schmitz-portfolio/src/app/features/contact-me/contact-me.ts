@@ -30,6 +30,27 @@ export function strictMessageValidator(): ValidatorFn {
   };
 }
 
+const COMMON_TLDS = [
+  'com', 'net', 'org', 'info', 'biz', 'edu', 'gov', 'name', 'pro', 'mobi',
+  'dev', 'app', 'online', 'site', 'shop', 'store', 'tech', 'xyz', 'email',
+  'cloud', 'blog', 'agency', 'berlin', 'koeln', 'nrw', 'club', 'live', 'digital'
+];
+
+export function strictEmailValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value ?? '';
+    if (!value) return null;
+
+    const emailRegex = /^[A-Za-z0-9._%+-]+@(?:[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?\.)+[A-Za-z]{2,}$/;
+    if (!emailRegex.test(value)) return { email: true };
+
+    const tld = value.split('.').pop()!.toLowerCase();
+    const isKnownTld = tld.length === 2 || COMMON_TLDS.includes(tld);
+
+    return isKnownTld ? null : { email: true };
+  };
+}
+
 @Component({
   selector: 'app-contact-me',
   standalone: true,
@@ -90,7 +111,7 @@ export class ContactMe {
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, strictNameValidator()]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, strictEmailValidator()]],
       message: ['', [Validators.required, strictMessageValidator()]],
       privacy: [false, [Validators.requiredTrue]]
     });
