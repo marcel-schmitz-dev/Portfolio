@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../shared/services/language.service';
 import { CommonModule } from '@angular/common';
 import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
@@ -11,7 +12,11 @@ import { Footer } from '../../shared/components/footer/footer';
   styleUrls: ['./legal-notice.scss']
 })
 export class LegalNotice {
-  currentLang: 'de' | 'en' = 'en';
+  private language = inject(LanguageService);
+
+  get currentLang(): 'de' | 'en' {
+    return this.language.lang;
+  }
 
   translations = {
     de: {
@@ -22,9 +27,9 @@ export class LegalNotice {
       contact: 'Kontakt',
       
       legalTitle: 'Impressum',
-      imprint: 'Angaben gemäß § 5 TMG',
+      imprint: 'Angaben gemäß § 5 DDG',
       acceptanceTitle: 'Nutzungsbedingungen',
-      acceptanceText: 'Durch den Zugriff auf und die Nutzung dieses Portfolios erklären Sie sich mit den folgenden Geschäftsbedingungen einverstanden...',
+      acceptanceText: 'Durch den Zugriff auf und die Nutzung dieses Portfolios erklären Sie sich mit den folgenden Nutzungsbedingungen einverstanden.',
       scopeTitle: 'Geltungsbereich und Eigentum',
       scopeText1: 'Dieses Portfolio wurde für professionelle Präsentations- und Bildungszwecke entwickelt.',
       scopeText2: 'Das Design und der Code dieses Portfolios sind Eigentum von Marcel Schmitz. Unerlaubte Vervielfältigung ist untersagt.',
@@ -33,9 +38,9 @@ export class LegalNotice {
       useTitle: 'Nutzung des Produkts',
       useText: 'Dieses Portfolio ist nur für rechtmäßige Zwecke zu verwenden.',
       disclaimerTitle: 'Haftungsausschluss',
-      disclaimerText: 'Dieses Portfolio wird "wie besehen" ohne jegliche ausdrückliche oder implizite Garantie bereitgestellt.',
+      disclaimerText: 'Dieses Portfolio wird "wie besehen" ohne jegliche ausdrückliche oder stillschweigende Gewährleistung bereitgestellt. Für die Inhalte externer Links übernehme ich keine Haftung.',
       indemnityTitle: 'Freistellung',
-      indemnityText: 'Sie erklären sich damit einverstanden, den Autor schadlos zu halten.',
+      indemnityText: 'Sie erklären sich damit einverstanden, den Autor von Ansprüchen Dritter freizustellen, die aus einer rechtswidrigen Nutzung dieses Portfolios entstehen.',
       questions: 'Bei Fragen kontaktieren Sie mich unter:',
       date: 'Datum: 29. September 2026'
     },
@@ -49,7 +54,7 @@ export class LegalNotice {
       legalTitle: 'Legal Notice',
       imprint: 'Imprint',
       acceptanceTitle: 'Acceptance of terms',
-      acceptanceText: 'By accessing and using this portfolio, you acknowledge and agree to the following terms and conditions...',
+      acceptanceText: 'By accessing and using this portfolio, you acknowledge and agree to the following terms and conditions.',
       scopeTitle: 'Scope and ownership of the product',
       scopeText1: 'This portfolio has been developed for professional presentation and educational purposes.',
       scopeText2: 'The design and code of this portfolio are owned by Marcel Schmitz. Unauthorized use, reproduction, modification, distribution, or replication of the design or content is strictly prohibited.',
@@ -58,9 +63,9 @@ export class LegalNotice {
       useTitle: 'Use of the product',
       useText: 'This portfolio is intended to be used for lawful purposes only, in accordance with all applicable laws and regulations.',
       disclaimerTitle: 'Disclaimer of warranties and limitation of liability',
-      disclaimerText: 'This portfolio is provided "as is" without warranty of any kind, whether express or implied...',
+      disclaimerText: 'This portfolio is provided "as is" without warranty of any kind, whether express or implied. I accept no liability for the content of external links.',
       indemnityTitle: 'Indemnity',
-      indemnityText: 'You agree to indemnify, defend and hold harmless the site owner and author from and against any claim...',
+      indemnityText: 'You agree to indemnify and hold harmless the site owner and author from any third-party claims arising from your unlawful use of this portfolio.',
       questions: 'For any questions or notices, please contact me at',
       date: 'Date: September 29, 2026'
     }
@@ -71,6 +76,6 @@ export class LegalNotice {
   }
 
   toggleLanguage(): void {
-    this.currentLang = this.currentLang === 'de' ? 'en' : 'de';
+    this.language.toggle();
   }
 }

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LanguageService } from '../../shared/services/language.service';
 import { WhyMe } from '../why-me/why-me';
 import { Skills } from '../skills/skills';
 import { Projects } from '../projects/projects';
@@ -15,8 +16,15 @@ import { Footer } from '../../shared/components/footer/footer';
   templateUrl: './home.html',
 })
 export class Home {
-  currentLang: 'de' | 'en' = 'en';
+  private language = inject(LanguageService);
   isMenuOpen = false;
+
+  get currentLang(): 'de' | 'en' {
+    return this.language.lang;
+  }
+  set currentLang(value: 'de' | 'en') {
+    this.language.lang = value;
+  }
 
   translations = {
     de: {
@@ -40,7 +48,7 @@ export class Home {
   }
 
   toggleLanguage(): void {
-    this.currentLang = this.currentLang === 'de' ? 'en' : 'de';
+    this.language.toggle();
   }
 
   toggleMenu(): void {
