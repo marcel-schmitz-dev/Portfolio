@@ -96,30 +96,63 @@
   }
 }
 
+// Tablet + Mobile: Blobs nebeneinander, horizontal scrollbar (nächster Blob schaut rechts heraus)
 @media (max-width: 1100px) {
-  .teamplayer__list {
-    flex-direction: column;
-    gap: 16px;
+  .teamplayer {
+    padding-inline: 0;
+
+    &__title {
+      padding-inline: 40px;
+    }
+
+    &__list {
+      justify-content: flex-start;
+      max-width: none;
+      margin: 0;
+      padding-inline: 40px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-padding-inline: 40px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 
   .review {
-    width: min(100%, 380px);
+    width: min(380px, calc(100vw - 100px));
+    padding: 0 17%;
+    scroll-snap-align: start;
   }
 }
 
 @media (max-width: 480px) {
   .teamplayer {
-    padding: 56px 16px;
+    padding: 56px 0;
 
     &__title {
       font-size: 24px;
+      padding-inline: 16px;
+    }
+
+    &__list {
+      padding-inline: 16px;
+      scroll-padding-inline: 16px;
     }
   }
 
   .review {
-    padding: 0 10%;
+    width: min(380px, calc(100vw - 72px));
+
+    &__name {
+      font-size: 22px;
+    }
 
     &__quote {
+      margin: 16px 0 20px;
       font-size: 16px;
     }
   }
