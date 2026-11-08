@@ -62,12 +62,12 @@ export class Projects {
         ...baseTitles,
         exp: { en: 'My group work experience', de: 'Meine Erfahrung in der Gruppenarbeit' },
         orgText: {
-          en: 'Details will follow once the group project is completed.',
-          de: 'Details folgen nach Abschluss des Gruppenprojekts.'
+          en: 'We worked in a team of four using Scrum-style sprints. Tasks were planned and distributed on a Trello board, and the design was based on a Figma template.',
+          de: 'Wir haben im Viererteam in Scrum-Sprints gearbeitet. Die Aufgaben wurden in einem Trello-Board geplant und verteilt, das Design basiert auf einer Figma-Vorlage.'
         },
         expText: {
-          en: 'Details will follow once the group project is completed.',
-          de: 'Details folgen nach Abschluss des Gruppenprojekts.'
+          en: 'I worked on the contacts and on the task form fields and the add-task overlay, using Supabase as the backend, and learned how to use Git branches, reviews and clear agreements in a team.',
+          de: 'Ich habe an den Kontakten sowie an den Formularfeldern und dem Add-Task-Overlay gearbeitet, mit Supabase als Backend, und gelernt, wie man Git-Branches, Reviews und klare Absprachen im Team nutzt.'
         }
       },
       technologies: [
@@ -75,9 +75,9 @@ export class Projects {
         { name: 'JavaScript', icon: './assets/project/Javascript.png' },
         { name: 'CSS3', icon: './assets/project/Frame 501.png' }
       ],
-      image: './assets/project/join.png',
-      liveLink: '',
-      githubLink: ''
+      image: './assets/project/join-preview.webp',
+      liveLink: 'https://marcel-schmitz-dev.github.io/Join/',
+      githubLink: 'https://github.com/marcel-schmitz-dev/Join'
     }
   ];
 
