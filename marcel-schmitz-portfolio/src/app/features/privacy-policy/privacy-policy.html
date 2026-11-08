@@ -1,0 +1,18 @@
+<main class="legal-page">
+  <app-header [currentLang]="currentLang" [t]="t" (langChange)="toggleLanguage()"> </app-header>
+
+  <section class="legal-content">
+    <div class="legal-container">
+      <h1 class="legal-title">{{ title[currentLang] }}</h1>
+
+      <div class="legal-block" *ngFor="let section of sections[currentLang]">
+        <h2>{{ section.title }}</h2>
+        <p *ngFor="let paragraph of section.paragraphs">{{ paragraph }}</p>
+      </div>
+
+      <p class="legal-block legal-date">{{ date[currentLang] }}</p>
+    </div>
+  </section>
+
+  <app-footer [lang]="currentLang"></app-footer>
+</main>

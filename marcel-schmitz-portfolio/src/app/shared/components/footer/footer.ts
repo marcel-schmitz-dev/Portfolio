@@ -15,10 +15,12 @@ export class Footer {
   translations = {
     de: {
       legalNotice: 'Impressum',
+      privacyPolicy: 'Datenschutzerklärung',
       copyright: '© Marcel Schmitz 2026'
     },
     en: {
       legalNotice: 'Legal Notice',
+      privacyPolicy: 'Privacy Policy',
       copyright: '© Marcel Schmitz 2026'
     }
   };
