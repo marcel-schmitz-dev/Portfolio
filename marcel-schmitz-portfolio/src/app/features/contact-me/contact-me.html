@@ -128,7 +128,7 @@
               />
             </span>
             <span
-              >{{ t.privacyText }}<a href="/privacy" target="_blank">{{ t.privacyLink }}</a
+              >{{ t.privacyText }}<a routerLink="/privacy-policy" target="_blank">{{ t.privacyLink }}</a
               >{{ t.privacyEnd }}</span
             >
           </label>
@@ -136,15 +136,18 @@
           <button
             type="submit"
             class="contact__submit-btn"
-            [disabled]="contactForm.invalid"
+            [disabled]="contactForm.invalid || isSending"
             [class.active]="contactForm.valid"
           >
             {{ t.sendBtn }}
           </button>
         </div>
 
-        <div class="contact__feedback" *ngIf="submitSuccess">
+        <div class="contact__feedback" *ngIf="submitSuccess" role="status">
           <p>{{ t.successMessage }}</p>
+        </div>
+        <div class="contact__feedback contact__feedback--error" *ngIf="submitError" role="alert">
+          <p>{{ t.errorMessageSend }}</p>
         </div>
       </form>
     </div>

@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
@@ -54,7 +56,7 @@ export function strictEmailValidator(): ValidatorFn {
 @Component({
   selector: 'app-contact-me',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './contact-me.html',
   styleUrl: './contact-me.scss',
 })
@@ -64,6 +66,10 @@ export class ContactMe {
   contactForm: FormGroup;
   isSubmitted = false;
   submitSuccess = false;
+  submitError = false;
+  isSending = false;
+  private http = inject(HttpClient);
+  private readonly mailEndpoint = '/sendMail.php';
 
   nameTouched = false;
   emailTouched = false;
@@ -83,10 +89,11 @@ export class ContactMe {
       privacyLink: 'Datenschutzerklärung',
       privacyEnd: ' gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.',
       sendBtn: 'Senden',
-      successMessage: 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet.',
+      successMessage: 'Vielen Dank! Deine Nachricht wurde erfolgreich gesendet.',
+      errorMessageSend: 'Das hat leider nicht geklappt. Bitte versuche es später erneut oder schreib mir direkt per E-Mail.',
       errorName: 'Bitte gib deinen vollständigen Namen ein (Vor- und Nachname, nur Buchstaben).',
-      errorEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein (z.B. name@domain.de).',
-      errorMessage: 'Bitte geben Sie eine gültige Nachricht ein (min. 10 Zeichen, echter Text).'
+      errorEmail: 'Bitte gib eine gültige E-Mail-Adresse ein (z. B. name@domain.de).',
+      errorMessage: 'Bitte gib eine gültige Nachricht ein (mindestens 10 Zeichen, echter Text).'
     },
     en: {
       title: 'Contact me',
@@ -102,6 +109,7 @@ export class ContactMe {
       privacyEnd: ' and agree to the processing of my data as outlined.',
       sendBtn: 'Send',
       successMessage: 'Thank you! Your message has been sent successfully.',
+      errorMessageSend: 'Sorry, something went wrong. Please try again later or email me directly.',
       errorName: 'Please enter your full name (first and last name, letters only).',
       errorEmail: 'Please enter a valid email address (e.g., name@domain.com).',
       errorMessage: 'Please enter a valid message (min. 10 chars, actual text).'
@@ -131,21 +139,38 @@ export class ContactMe {
     this.nameTouched = true;
     this.emailTouched = true;
     this.messageTouched = true;
-    this.isSubmitted = true;
     this.contactForm.markAllAsTouched();
 
-    if (this.contactForm.valid) {
-      this.submitSuccess = true;
-      console.log(this.contactForm.value);
+    if (this.contactForm.invalid || this.isSending) return;
 
-      setTimeout(() => {
-        this.contactForm.reset();
-        this.nameTouched = false;
-        this.emailTouched = false;
-        this.messageTouched = false;
-        this.isSubmitted = false;
-        this.submitSuccess = false;
-      }, 5000);
-    }
+    this.isSending = true;
+    this.submitSuccess = false;
+    this.submitError = false;
+
+    const { name, email, message } = this.contactForm.value;
+    this.http.post(this.mailEndpoint, { name, email, message }).subscribe({
+      next: () => this.onSendSuccess(),
+      error: () => this.onSendError()
+    });
+  }
+
+  private onSendSuccess(): void {
+    this.isSending = false;
+    this.submitSuccess = true;
+    this.resetForm();
+    setTimeout(() => (this.submitSuccess = false), 5000);
+  }
+
+  private onSendError(): void {
+    this.isSending = false;
+    this.submitError = true;
+    setTimeout(() => (this.submitError = false), 8000);
+  }
+
+  private resetForm(): void {
+    this.contactForm.reset({ name: '', email: '', message: '', privacy: false });
+    this.nameTouched = false;
+    this.emailTouched = false;
+    this.messageTouched = false;
   }
 }

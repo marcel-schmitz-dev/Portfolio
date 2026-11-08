@@ -342,3 +342,8 @@ $bp-mobile: 600px;
         }
     }
 }
+.contact__form .contact__feedback.contact__feedback--error {
+    background-color: rgba(228, 76, 54, 0.15);
+    border-color: var(--color-error);
+    color: var(--color-error);
+}
