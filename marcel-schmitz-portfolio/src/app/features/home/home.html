@@ -30,13 +30,19 @@
     </div>
 
     <div class="hero__socials-vertical desktop-only">
-      <a href="mailto:m.schmitz.dev@gmail.com" aria-label="Email" class="social-link">
+      <a
+        href="#contact"
+        (click)="$event.preventDefault(); scrollToSection('contact')"
+        aria-label="Email"
+        class="social-link"
+      >
         <img src="./assets/Mail-def.webp" alt="Email" class="social-img social-default" />
         <img src="./assets/email-hover.png" alt="Email Hover" class="social-img social-hover" />
       </a>
       <a
         href="https://github.com/marcel-schmitz-dev"
         target="_blank"
+        rel="noopener noreferrer"
         aria-label="GitHub"
         class="social-link"
       >
@@ -44,8 +50,9 @@
         <img src="./assets/git-hover.png" alt="GitHub Hover" class="social-img social-hover" />
       </a>
       <a
-        href="https://linkedin.com/in/dein-linkedin"
+        href="https://www.linkedin.com/in/marcel-schmitz-4bb060447/"
         target="_blank"
+        rel="noopener noreferrer"
         aria-label="LinkedIn"
         class="social-link"
       >
