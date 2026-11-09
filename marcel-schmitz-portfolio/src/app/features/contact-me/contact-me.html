@@ -139,7 +139,7 @@
             [disabled]="contactForm.invalid || isSending"
             [class.active]="contactForm.valid"
           >
-            {{ t.sendBtn }}
+            {{ isSending ? t.sending : t.sendBtn }}
           </button>
         </div>
 

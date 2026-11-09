@@ -1,6 +1,7 @@
 import { Component, Input, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
+import { timeout } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
@@ -90,6 +91,7 @@ export class ContactMe {
       privacyEnd: ' gelesen und stimme der Verarbeitung meiner Daten wie beschrieben zu.',
       sendBtn: 'Senden',
       successMessage: 'Vielen Dank! Deine Nachricht wurde erfolgreich gesendet.',
+      sending: 'Wird gesendet …',
       errorMessageSend: 'Das hat leider nicht geklappt. Bitte versuche es später erneut oder schreib mir direkt per E-Mail.',
       errorName: 'Bitte gib deinen vollständigen Namen ein (Vor- und Nachname, nur Buchstaben).',
       errorEmail: 'Bitte gib eine gültige E-Mail-Adresse ein (z. B. name@domain.de).',
@@ -109,6 +111,7 @@ export class ContactMe {
       privacyEnd: ' and agree to the processing of my data as outlined.',
       sendBtn: 'Send',
       successMessage: 'Thank you! Your message has been sent successfully.',
+      sending: 'Sending …',
       errorMessageSend: 'Sorry, something went wrong. Please try again later or email me directly.',
       errorName: 'Please enter your full name (first and last name, letters only).',
       errorEmail: 'Please enter a valid email address (e.g., name@domain.com).',
@@ -148,10 +151,13 @@ export class ContactMe {
     this.submitError = false;
 
     const { name, email, message } = this.contactForm.value;
-    this.http.post(this.mailEndpoint, { name, email, message }).subscribe({
-      next: () => this.onSendSuccess(),
-      error: () => this.onSendError()
-    });
+    this.http
+      .post(this.mailEndpoint, { name, email, message })
+      .pipe(timeout(10000))
+      .subscribe({
+        next: () => this.onSendSuccess(),
+        error: (err) => this.onSendError(err)
+      });
   }
 
   private onSendSuccess(): void {
@@ -161,7 +167,8 @@ export class ContactMe {
     setTimeout(() => (this.submitSuccess = false), 5000);
   }
 
-  private onSendError(): void {
+  private onSendError(err?: unknown): void {
+    console.error('Mail senden fehlgeschlagen:', err);
     this.isSending = false;
     this.submitError = true;
     setTimeout(() => (this.submitError = false), 8000);
