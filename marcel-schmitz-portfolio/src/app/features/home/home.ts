@@ -28,7 +28,7 @@ export class Home {
 
   translations = {
     de: {
-      subtitle: 'FRONTEND DEVELOPER',
+      subtitle: 'FRONTEND-ENTWICKLER',
       whyMe: 'Warum ich',
       skills: 'Fähigkeiten',
       projects: 'Projekte',

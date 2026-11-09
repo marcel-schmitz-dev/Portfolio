@@ -5,7 +5,7 @@
         <img src="./assets/logo.png" alt="Logo" class="hero__top-logo-img" />
         <div class="hero__top-logo-text">
           <span class="name-anta">M.Schmitz</span>
-          <span class="dev-josefin">developer</span>
+          <span class="dev-josefin">{{ currentLang === 'de' ? 'entwickler' : 'developer' }}</span>
         </div>
       </div>
 
@@ -25,17 +25,12 @@
       <img src="./assets/logo.png" alt="Logo" class="hero__top-logo-img" />
       <div class="hero__top-logo-text">
         <span class="name-anta">M.Schmitz</span>
-        <span class="dev-josefin">developer</span>
+        <span class="dev-josefin">{{ currentLang === 'de' ? 'entwickler' : 'developer' }}</span>
       </div>
     </div>
 
     <div class="hero__socials-vertical desktop-only">
-      <a
-        href="#contact"
-        (click)="$event.preventDefault(); scrollToSection('contact')"
-        aria-label="Email"
-        class="social-link"
-      >
+      <a href="mailto:m.schmitz.dev@gmail.com" aria-label="Email" class="social-link">
         <img src="./assets/Mail-def.webp" alt="Email" class="social-img social-default" />
         <img src="./assets/email-hover.png" alt="Email Hover" class="social-img social-hover" />
       </a>
