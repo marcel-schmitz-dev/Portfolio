@@ -53,7 +53,7 @@ export class Projects {
     {
       id: 'join',
       name: 'Join',
-      duration: { en: '2 months', de: '2 Monate' },
+      duration: { en: '3 weeks', de: '3 Wochen' },
       description: {
         en: 'Task manager inspired by the Kanban system. Create and organize tasks using drag and drop, assign users and categories.',
         de: 'Task-Manager nach dem Kanban-System. Aufgaben erstellen und per Drag-and-drop organisieren, Nutzer und Kategorien zuweisen.'
@@ -71,9 +71,9 @@ export class Projects {
         }
       },
       technologies: [
-        { name: 'HTML5', icon: './assets/project/html.png' },
-        { name: 'JavaScript', icon: './assets/project/Javascript.png' },
-        { name: 'CSS3', icon: './assets/project/Frame 501.png' }
+        { name: 'Angular', icon: './assets/project/Angular.png' },
+        { name: 'TypeScript', icon: './assets/project/TypeScript.png' },
+        { name: 'SCSS', icon: './assets/project/SCSS.png' }
       ],
       image: './assets/project/join-preview.webp',
       liveLink: 'https://marcel-schmitz-dev.github.io/Join/',

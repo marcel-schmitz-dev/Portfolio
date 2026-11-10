@@ -34,7 +34,7 @@ export class Teamplayer {
   reviews: Review[] = [
     {
       name: 'Teammitglied 1',
-      project: 'DA Bubble',
+      project: 'Join',
       projectLink: '#projects',
       quote: {
         de: 'Platzhalter: Hier steht bald das Feedback aus meinem Team.',
