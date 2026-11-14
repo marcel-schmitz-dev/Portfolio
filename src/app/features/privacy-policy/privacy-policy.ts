@@ -36,7 +36,7 @@ export class PrivacyPolicy {
       {
         title: 'Verantwortlicher',
         paragraphs: [
-          'Marcel Schmitz, Von-Agris-Straße 39, 41844 Wegberg, E-Mail: m.schmitz.dev@gmail.com'
+          'Marcel Schmitz, Von-Agris-Straße 39, 41844 Wegberg, E-Mail: kontakt@mschmitz-dev.de'
         ]
       },
       {
@@ -72,7 +72,7 @@ export class PrivacyPolicy {
       {
         title: 'Deine Rechte',
         paragraphs: [
-          'Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Erteilte Einwilligungen kannst du jederzeit widerrufen. Außerdem hast du das Recht, dich bei der zuständigen Datenschutz-Aufsichtsbehörde zu beschweren. Schreib mir dazu einfach an m.schmitz.dev@gmail.com.'
+          'Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch (Art. 15–21 DSGVO). Erteilte Einwilligungen kannst du jederzeit widerrufen. Außerdem hast du das Recht, dich bei der zuständigen Datenschutz-Aufsichtsbehörde zu beschweren. Schreib mir dazu einfach an kontakt@mschmitz-dev.de.'
         ]
       }
     ],
@@ -80,7 +80,7 @@ export class PrivacyPolicy {
       {
         title: 'Controller',
         paragraphs: [
-          'Marcel Schmitz, Von-Agris-Straße 39, 41844 Wegberg, Germany, email: m.schmitz.dev@gmail.com'
+          'Marcel Schmitz, Von-Agris-Straße 39, 41844 Wegberg, Germany, email: kontakt@mschmitz-dev.de'
         ]
       },
       {
@@ -116,7 +116,7 @@ export class PrivacyPolicy {
       {
         title: 'Your rights',
         paragraphs: [
-          'You have the right to access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR). You can withdraw any consent at any time. You also have the right to lodge a complaint with the competent data protection supervisory authority. To exercise your rights, just write to m.schmitz.dev@gmail.com.'
+          'You have the right to access, rectification, erasure, restriction of processing, data portability and objection (Art. 15–21 GDPR). You can withdraw any consent at any time. You also have the right to lodge a complaint with the competent data protection supervisory authority. To exercise your rights, just write to kontakt@mschmitz-dev.de.'
         ]
       }
     ]

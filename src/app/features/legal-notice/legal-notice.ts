@@ -42,7 +42,7 @@ export class LegalNotice {
       indemnityTitle: 'Freistellung',
       indemnityText: 'Sie erklären sich damit einverstanden, den Autor von Ansprüchen Dritter freizustellen, die aus einer rechtswidrigen Nutzung dieses Portfolios entstehen.',
       questions: 'Bei Fragen kontaktieren Sie mich unter:',
-      date: 'Datum: 29. September 2026'
+      date: 'Datum: 14. November 2026'
     },
     en: {
       subtitle: 'FRONTEND DEVELOPER',
@@ -67,7 +67,7 @@ export class LegalNotice {
       indemnityTitle: 'Indemnity',
       indemnityText: 'You agree to indemnify and hold harmless the site owner and author from any third-party claims arising from your unlawful use of this portfolio.',
       questions: 'For any questions or notices, please contact me at',
-      date: 'Date: September 29, 2026'
+      date: 'Date: November 14, 2026'
     }
   };
 
