@@ -347,3 +347,13 @@ $bp-mobile: 600px;
     border-color: var(--color-error);
     color: var(--color-error);
 }
+
+.contact__tel {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+  }
+}
