@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+/** Gemeinsame Überschriften der Projektbeschreibungen in beiden Sprachen. */
 const baseTitles = {
   about: { en: 'About the project', de: 'Über das Projekt' },
   durationText: { en: 'Duration:', de: 'Dauer:' },
@@ -10,16 +11,19 @@ const baseTitles = {
   githubBtn: { en: 'GitHub', de: 'GitHub' }
 };
 
+/** Projektübersicht mit Auswahl, Beschreibung, Technologien und Links. */
 @Component({
   selector: 'app-projects',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './projects.html',
-  styleUrl: './projects.scss'
+  styleUrls: ['./projects.scss', './projects-preview.scss']
 })
 export class Projects {
+  /** Aktuelle Sprache der Komponente (Deutsch oder Englisch). */
   @Input() lang: 'de' | 'en' = 'en';
 
+  /** Alle Projekte mit Texten, Technologien, Vorschaubild und Links. */
   projects = [
     {
       id: 'byterunner',
@@ -81,17 +85,27 @@ export class Projects {
     }
   ];
 
+  /** Aktuell angezeigtes Projekt. */
   selectedProject = this.projects[0];
 
+  /** Überschrift des Abschnitts in beiden Sprachen. */
   sectionHeader = {
     en: 'My Projects',
     de: 'Meine Projekte'
   };
 
+  /**
+   * Wählt ein Projekt für die Anzeige aus.
+   * @param index Position des Projekts in der Liste.
+   */
   selectProject(index: number): void {
     this.selectedProject = this.projects[index];
   }
 
+  /**
+   * Liefert die Technologien des gewählten Projekts als Textliste.
+   * @returns Namen der Technologien, durch Komma getrennt.
+   */
   get techNames(): string {
     return this.selectedProject.technologies.map((t) => t.name).join(', ');
   }
