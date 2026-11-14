@@ -5,24 +5,37 @@ import { timeout } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+/** Erlaubte Zeichen für Namen: Buchstaben, getrennt durch Leerzeichen, Apostroph oder Bindestrich. */
+const NAME_PATTERN = /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u;
+
+/**
+ * Prüft, ob der Text aus mindestens zwei Namensteilen mit je mindestens zwei Buchstaben besteht.
+ * @param value Der bereinigte Name.
+ * @returns true, wenn Vor- und Nachname erkannt werden.
+ */
+function isFullName(value: string): boolean {
+  const parts = value.split(/\s+/);
+  return parts.length >= 2 && parts.every((p) => p.replace(/[-']/g, '').length >= 2);
+}
+
+/**
+ * Validator für den vollständigen Namen (Vor- und Nachname, nur Buchstaben).
+ * @returns Validator, der bei ungültigem Namen den Fehler invalidName liefert.
+ */
 export function strictNameValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const raw = control.value ?? '';
     if (!raw) return null;
-
     const value = raw.trim();
     if (!value) return { invalidName: true };
-
-    const allowedChars = /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u;
-
-    const parts = value.split(/\s+/);
-    const hasFullName =
-      parts.length >= 2 && parts.every((p: string) => p.replace(/[-']/g, '').length >= 2);
-
-    return allowedChars.test(value) && hasFullName ? null : { invalidName: true };
+    return NAME_PATTERN.test(value) && isFullName(value) ? null : { invalidName: true };
   };
 }
 
+/**
+ * Validator für die Nachricht (mindestens 10 Zeichen und echter Text).
+ * @returns Validator, der bei ungültiger Nachricht den Fehler invalidMessage liefert.
+ */
 export function strictMessageValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value;
@@ -33,12 +46,17 @@ export function strictMessageValidator(): ValidatorFn {
   };
 }
 
+/** Bekannte Domain-Endungen mit mehr als zwei Buchstaben. */
 const COMMON_TLDS = [
   'com', 'net', 'org', 'info', 'biz', 'edu', 'gov', 'name', 'pro', 'mobi',
   'dev', 'app', 'online', 'site', 'shop', 'store', 'tech', 'xyz', 'email',
   'cloud', 'blog', 'agency', 'berlin', 'koeln', 'nrw', 'club', 'live', 'digital'
 ];
 
+/**
+ * Validator für E-Mail-Adressen inklusive Prüfung der Domain-Endung.
+ * @returns Validator, der bei ungültiger Adresse den Fehler email liefert.
+ */
 export function strictEmailValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const value = control.value ?? '';
@@ -54,6 +72,7 @@ export function strictEmailValidator(): ValidatorFn {
   };
 }
 
+/** Kontaktabschnitt mit Formular, Validierung und Mailversand über sendMail.php. */
 @Component({
   selector: 'app-contact-me',
   standalone: true,
@@ -62,20 +81,32 @@ export function strictEmailValidator(): ValidatorFn {
   styleUrl: './contact-me.scss',
 })
 export class ContactMe {
+  /** Aktuelle Sprache der Komponente (Deutsch oder Englisch). */
   @Input() lang: 'de' | 'en' = 'en';
   
+  /** Formular mit Name, E-Mail, Nachricht und Datenschutz-Checkbox. */
   contactForm: FormGroup;
+  /** Gibt an, ob das Formular abgeschickt wurde. */
   isSubmitted = false;
+  /** Gibt an, ob die Nachricht erfolgreich gesendet wurde. */
   submitSuccess = false;
+  /** Gibt an, ob der Versand fehlgeschlagen ist. */
   submitError = false;
+  /** Gibt an, ob gerade gesendet wird. */
   isSending = false;
+  /** HTTP-Client für den Versand. */
   private http = inject(HttpClient);
+  /** Adresse des PHP-Skripts für den Mailversand. */
   private readonly mailEndpoint = '/sendMail.php';
 
+  /** Wurde das Namensfeld bereits verlassen? */
   nameTouched = false;
+  /** Wurde das E-Mail-Feld bereits verlassen? */
   emailTouched = false;
+  /** Wurde das Nachrichtenfeld bereits verlassen? */
   messageTouched = false;
 
+  /** Übersetzte Texte der Komponente. */
   translations = {
     de: {
       title: 'Kontakt',
@@ -119,6 +150,10 @@ export class ContactMe {
     }
   };
 
+  /**
+   * Erstellt das Formular mit allen Validatoren.
+   * @param fb FormBuilder zum Aufbau des Formulars.
+   */
   constructor(private fb: FormBuilder) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, strictNameValidator()]],
@@ -128,28 +163,44 @@ export class ContactMe {
     });
   }
 
+  /**
+   * Liefert die Texte in der aktuell gewählten Sprache.
+   * @returns Das Übersetzungsobjekt der aktuellen Sprache.
+   */
   get t() {
     return this.translations[this.lang];
   }
 
-  onBlur(field: string) {
+  /**
+   * Merkt sich, dass ein Feld verlassen wurde, damit erst dann Fehler angezeigt werden.
+   * @param field Name des Feldes (name, email oder message).
+   */
+  onBlur(field: string): void {
     if (field === 'name') this.nameTouched = true;
     if (field === 'email') this.emailTouched = true;
     if (field === 'message') this.messageTouched = true;
   }
 
-  onSubmit() {
+  /** Validiert das Formular und startet bei gültigen Eingaben den Versand. */
+  onSubmit(): void {
+    this.markAllTouched();
+    if (this.contactForm.invalid || this.isSending) return;
+    this.isSending = true;
+    this.submitSuccess = false;
+    this.submitError = false;
+    this.sendMail();
+  }
+
+  /** Markiert alle Felder als berührt, damit alle Fehlermeldungen sichtbar werden. */
+  private markAllTouched(): void {
     this.nameTouched = true;
     this.emailTouched = true;
     this.messageTouched = true;
     this.contactForm.markAllAsTouched();
+  }
 
-    if (this.contactForm.invalid || this.isSending) return;
-
-    this.isSending = true;
-    this.submitSuccess = false;
-    this.submitError = false;
-
+  /** Sendet die Formulardaten per POST an das PHP-Skript (Timeout: 10 Sekunden). */
+  private sendMail(): void {
     const { name, email, message } = this.contactForm.value;
     this.http
       .post(this.mailEndpoint, { name, email, message })
@@ -160,6 +211,7 @@ export class ContactMe {
       });
   }
 
+  /** Zeigt die Erfolgsmeldung an und setzt das Formular zurück. */
   private onSendSuccess(): void {
     this.isSending = false;
     this.submitSuccess = true;
@@ -167,6 +219,10 @@ export class ContactMe {
     setTimeout(() => (this.submitSuccess = false), 5000);
   }
 
+  /**
+   * Zeigt die Fehlermeldung an.
+   * @param err Fehler des Versands.
+   */
   private onSendError(err?: unknown): void {
     console.error('Mail senden fehlgeschlagen:', err);
     this.isSending = false;
@@ -174,6 +230,7 @@ export class ContactMe {
     setTimeout(() => (this.submitError = false), 8000);
   }
 
+  /** Setzt Formular und Fehlerstatus auf den Anfangszustand zurück. */
   private resetForm(): void {
     this.contactForm.reset({ name: '', email: '', message: '', privacy: false });
     this.nameTouched = false;
