@@ -7,26 +7,15 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 
+/** Pfad zum Ordner mit den gebauten Browser-Dateien. */
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
+/** Express-Anwendung des Servers. */
 const app = express();
+/** Angular-Engine für das serverseitige Rendering. */
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
-
-/**
- * Serve static files from /browser
- */
+/** Liefert die statischen Dateien aus dem Ordner browser aus. */
 app.use(
   express.static(browserDistFolder, {
     maxAge: '1y',
@@ -35,9 +24,7 @@ app.use(
   }),
 );
 
-/**
- * Handle all other requests by rendering the Angular application.
- */
+/** Rendert alle übrigen Anfragen mit der Angular-Anwendung. */
 app.use((req, res, next) => {
   angularApp
     .handle(req)
@@ -48,8 +35,8 @@ app.use((req, res, next) => {
 });
 
 /**
- * Start the server if this module is the main entry point, or it is ran via PM2.
- * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
+ * Startet den Server, wenn das Modul direkt oder über PM2 ausgeführt wird.
+ * Der Port kommt aus der Umgebungsvariable PORT (Standard: 4000).
  */
 if (isMainModule(import.meta.url) || process.env['pm_id']) {
   const port = process.env['PORT'] || 4000;
@@ -62,7 +49,5 @@ if (isMainModule(import.meta.url) || process.env['pm_id']) {
   });
 }
 
-/**
- * Request handler used by the Angular CLI (for dev-server and during build) or Firebase Cloud Functions.
- */
+/** Request-Handler für die Angular CLI (Dev-Server und Build). */
 export const reqHandler = createNodeRequestHandler(app);
