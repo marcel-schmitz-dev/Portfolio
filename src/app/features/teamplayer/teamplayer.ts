@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
 interface Review {
-  name: string;
-  project: string;
+  name: { de: string; en: string };
+  project: { de: string; en: string };
   projectLink: string;
   quote: { de: string; en: string };
   linkedin: string;
@@ -33,32 +33,32 @@ export class Teamplayer {
 
   reviews: Review[] = [
     {
-      name: 'Christian',
-      project: 'Join',
+      name: { de: 'Teamkollege', en: 'Teammate' },
+      project: { de: 'Gruppenprojekt', en: 'Group project' },
       projectLink: '#projects',
       quote: {
-        de: 'Platzhalter: Hier steht bald das Feedback aus meinem Team.',
-        en: 'Placeholder: Feedback from my team will appear here soon.',
+        de: 'Das Feedback aus meinem Team folgt in Kürze.',
+        en: 'Feedback from my team will follow soon.',
       },
       linkedin: '#',
     },
     {
-      name: 'Elias',
-      project: 'Join',
+      name: { de: 'Teamkollege', en: 'Teammate' },
+      project: { de: 'Gruppenprojekt', en: 'Group project' },
       projectLink: '#projects',
       quote: {
-        de: 'Platzhalter: Hier steht bald das Feedback aus meinem Team.',
-        en: 'Placeholder: Feedback from my team will appear here soon.',
+        de: 'Das Feedback aus meinem Team folgt in Kürze.',
+        en: 'Feedback from my team will follow soon.',
       },
       linkedin: '#',
     },
     {
-      name: 'Vincent',
-      project: 'Join',
+      name: { de: 'Teamkollege', en: 'Teammate' },
+      project: { de: 'Gruppenprojekt', en: 'Group project' },
       projectLink: '#projects',
       quote: {
-        de: 'Platzhalter: Hier steht bald das Feedback aus meinem Team.',
-        en: 'Placeholder: Feedback from my team will appear here soon.',
+        de: 'Das Feedback aus meinem Team folgt in Kürze.',
+        en: 'Feedback from my team will follow soon.',
       },
       linkedin: '#',
     },

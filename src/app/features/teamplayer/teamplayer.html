@@ -17,14 +17,16 @@
           aria-hidden="true"
         />
 
-        <h3 class="review__name">{{ review.name }}</h3>
+        <h3 class="review__name">{{ review.name[lang] }}</h3>
         <p class="review__project">
-          {{ t.project }} <a [href]="review.projectLink">{{ review.project }}</a>
+          {{ t.project }} <a [href]="review.projectLink">{{ review.project[lang] }}</a>
         </p>
         <blockquote class="review__quote">“{{ review.quote[lang] }}”</blockquote>
-        <a class="review__linkedin" [href]="review.linkedin" target="_blank" rel="noopener">
-          {{ t.linkedin }}
-        </a>
+        @if (review.linkedin !== '#') {
+          <a class="review__linkedin" [href]="review.linkedin" target="_blank" rel="noopener">
+            {{ t.linkedin }}
+          </a>
+        }
       </article>
     }
   </div>
