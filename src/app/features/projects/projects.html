@@ -73,7 +73,7 @@
         </div>
 
         <div class="project-image-wrapper">
-          <img [src]="selectedProject.image" [alt]="selectedProject.name + ' Preview'" class="project-img" />
+          <img [src]="selectedProject.image" [alt]="(lang === 'de' ? 'Vorschau des Projekts ' : 'Preview of the project ') + selectedProject.name" class="project-img" />
         </div>
 
         <div class="project-buttons">
