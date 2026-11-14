@@ -28,7 +28,7 @@ export class PrivacyPolicy {
     en: { whyMe: 'Why me', skills: 'Skills', projects: 'Projects', contact: 'Contact' }
   };
 
-  title = { de: 'Datenschutzerklärung', en: 'Privacy Policy' };
+  title = { de: 'Datenschutz\u00ADerklärung', en: 'Privacy Policy' };
   date = { de: 'Stand: November 2026', en: 'Last updated: November 2026' };
 
   sections: Record<'de' | 'en', PolicySection[]> = {
@@ -58,9 +58,9 @@ export class PrivacyPolicy {
         ]
       },
       {
-        title: 'Schriftarten (Google Fonts)',
+        title: 'Schriftarten',
         paragraphs: [
-          'Diese Seite lädt die Schriftarten „Anta“ und „Josefin Sans“ von Google Fonts. Dabei wird deine IP-Adresse an Server von Google übertragen (Art. 6 Abs. 1 lit. f DSGVO).'
+          'Die auf dieser Seite verwendeten Schriftarten „Anta“ und „Josefin Sans“ sind lokal auf dem Server gespeichert und werden von dort ausgeliefert. Es wird keine Verbindung zu Servern von Google oder anderen Drittanbietern aufgebaut, und deine IP-Adresse wird dafür nicht an Dritte übermittelt.'
         ]
       },
       {
@@ -102,9 +102,9 @@ export class PrivacyPolicy {
         ]
       },
       {
-        title: 'Fonts (Google Fonts)',
+        title: 'Fonts',
         paragraphs: [
-          'This site loads the fonts “Anta” and “Josefin Sans” from Google Fonts. In doing so, your IP address is transmitted to Google servers (Art. 6(1)(f) GDPR).'
+          'The fonts “Anta” and “Josefin Sans” used on this site are stored locally on the server and delivered from there. No connection to Google or other third-party servers is made, and your IP address is not transmitted to third parties for this purpose.'
         ]
       },
       {
