@@ -36,19 +36,25 @@ export class PrivacyPolicy {
       {
         title: 'Verantwortlicher',
         paragraphs: [
-          'Marcel Schmitz, [Straße und Hausnummer], [PLZ und Ort], E-Mail: m.schmitz.dev@gmail.com'
+          'Marcel Schmitz, Von-Agris-Straße 39, 41844 Wegberg, E-Mail: m.schmitz.dev@gmail.com'
         ]
       },
       {
         title: 'Hosting und Server-Logfiles',
         paragraphs: [
-          'Diese Website wird bei [Name des Hosting-Anbieters] gehostet. Beim Aufruf der Seite werden automatisch Daten wie IP-Adresse, Datum und Uhrzeit, aufgerufene Seite und Browsertyp in Server-Logfiles gespeichert. Das ist technisch notwendig, um die Seite auszuliefern und sicher zu betreiben (Art. 6 Abs. 1 lit. f DSGVO). Die Logfiles werden nach kurzer Zeit automatisch gelöscht.'
+          'Diese Website sowie meine Projekt-Subdomains (byterunner.mschmitz-dev.de, join.mschmitz-dev.de) werden bei IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, gehostet. Beim Aufruf der Seite werden automatisch Daten wie IP-Adresse, Datum und Uhrzeit, aufgerufene Seite und Browsertyp in Server-Logfiles gespeichert. Das ist technisch notwendig, um die Seite auszuliefern und sicher zu betreiben (Art. 6 Abs. 1 lit. f DSGVO). Mit IONOS besteht ein Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO. Die Logfiles werden nach kurzer Zeit automatisch gelöscht.'
         ]
       },
       {
         title: 'Kontaktformular',
         paragraphs: [
-          'Wenn du das Kontaktformular nutzt, werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail an mich übermittelt. Ich verwende diese Daten nur, um deine Anfrage zu beantworten (Art. 6 Abs. 1 lit. b bzw. lit. a DSGVO). Die Daten werden gelöscht, sobald sie für diesen Zweck nicht mehr benötigt werden. Mit dem Häkchen im Formular bestätigst du, dass du diese Erklärung gelesen hast.'
+          'Wenn du das Kontaktformular nutzt, werden dein Name, deine E-Mail-Adresse und deine Nachricht per E-Mail an mich übermittelt; der Versand läuft über den Mailserver meines Hosters IONOS. Ich verwende diese Daten nur, um deine Anfrage zu beantworten (Art. 6 Abs. 1 lit. b bzw. lit. a DSGVO). Die Daten werden gelöscht, sobald sie für diesen Zweck nicht mehr benötigt werden. Mit dem Häkchen im Formular bestätigst du, dass du diese Erklärung gelesen hast.'
+        ]
+      },
+      {
+        title: 'Projekt „Join“ und Datenbank (Supabase)',
+        paragraphs: [
+          'Das verlinkte Projekt „Join“ (join.mschmitz-dev.de) ist eine Demo-Anwendung und speichert Kontakte und Aufgaben in einer Datenbank von Supabase (Supabase, Inc., 970 Toa Payoh North, #07-04, Singapore 318992). Beim Nutzen von Join werden die von dir eingegebenen Daten (z. B. Namen, E-Mail-Adressen, Telefonnummern, Aufgaben) und technische Verbindungsdaten wie die IP-Adresse an Supabase übertragen und dort gespeichert (Art. 6 Abs. 1 lit. f DSGVO, Zweck: Bereitstellung der Demo). Mit Supabase besteht ein Vertrag zur Auftragsverarbeitung (DPA) nach Art. 28 DSGVO. Eine Übermittlung in Drittländer kann nicht ausgeschlossen werden; sie erfolgt auf Grundlage der Standardvertragsklauseln. Bitte gib in Join keine echten personenbezogenen Daten Dritter ein. Auf diesem Portfolio selbst wird keine Datenbank verwendet.'
         ]
       },
       {
@@ -74,19 +80,25 @@ export class PrivacyPolicy {
       {
         title: 'Controller',
         paragraphs: [
-          'Marcel Schmitz, [street and house number], [postcode and city], email: m.schmitz.dev@gmail.com'
+          'Marcel Schmitz, Von-Agris-Straße 39, 41844 Wegberg, Germany, email: m.schmitz.dev@gmail.com'
         ]
       },
       {
         title: 'Hosting and server log files',
         paragraphs: [
-          'This website is hosted by [name of hosting provider]. When you visit the site, data such as your IP address, date and time, the requested page and your browser type is automatically stored in server log files. This is technically necessary to deliver the site and keep it secure (Art. 6(1)(f) GDPR). The log files are deleted automatically after a short time.'
+          'This website and my project subdomains (byterunner.mschmitz-dev.de, join.mschmitz-dev.de) are hosted by IONOS SE, Elgendorfer Str. 57, 56410 Montabaur, Germany. When you visit the site, data such as your IP address, date and time, the requested page and your browser type is automatically stored in server log files. This is technically necessary to deliver the site and keep it secure (Art. 6(1)(f) GDPR). A data processing agreement under Art. 28 GDPR is in place with IONOS. The log files are deleted automatically after a short time.'
         ]
       },
       {
         title: 'Contact form',
         paragraphs: [
-          'If you use the contact form, your name, email address and message are sent to me by email. I only use this data to answer your request (Art. 6(1)(b) or (a) GDPR). The data is deleted as soon as it is no longer needed for that purpose. By ticking the box in the form, you confirm that you have read this policy.'
+          'If you use the contact form, your name, email address and message are sent to me by email; delivery runs through the mail server of my hosting provider IONOS. I only use this data to answer your request (Art. 6(1)(b) or (a) GDPR). The data is deleted as soon as it is no longer needed for that purpose. By ticking the box in the form, you confirm that you have read this policy.'
+        ]
+      },
+      {
+        title: 'Project “Join” and database (Supabase)',
+        paragraphs: [
+          'The linked project “Join” (join.mschmitz-dev.de) is a demo application that stores contacts and tasks in a Supabase database (Supabase, Inc., 970 Toa Payoh North, #07-04, Singapore 318992). When you use Join, the data you enter (e.g. names, email addresses, phone numbers, tasks) and technical connection data such as your IP address are transmitted to and stored by Supabase (Art. 6(1)(f) GDPR, purpose: providing the demo). A data processing agreement (DPA) under Art. 28 GDPR is in place with Supabase. Transfers to third countries cannot be ruled out; they are based on standard contractual clauses. Please do not enter real personal data of third parties in Join. This portfolio itself does not use a database.'
         ]
       },
       {
