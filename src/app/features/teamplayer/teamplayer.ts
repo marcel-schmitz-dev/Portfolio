@@ -33,7 +33,7 @@ export class Teamplayer {
 
   reviews: Review[] = [
     {
-      name: 'Teammitglied 1',
+      name: 'Christian',
       project: 'Join',
       projectLink: '#projects',
       quote: {
@@ -43,7 +43,7 @@ export class Teamplayer {
       linkedin: '#',
     },
     {
-      name: 'Teammitglied 2',
+      name: 'Elias',
       project: 'Join',
       projectLink: '#projects',
       quote: {
@@ -53,7 +53,7 @@ export class Teamplayer {
       linkedin: '#',
     },
     {
-      name: 'Teammitglied 3',
+      name: 'Vincent',
       project: 'Join',
       projectLink: '#projects',
       quote: {
