@@ -1,10 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Teamplayer } from './teamplayer';
 
+/** Unit-Tests für Teamplayer. */
 describe('Teamplayer', () => {
   let component: Teamplayer;
   let fixture: ComponentFixture<Teamplayer>;
 
+  /** Richtet das Testmodul ein und erzeugt die Komponente. */
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Teamplayer],
@@ -15,6 +17,7 @@ describe('Teamplayer', () => {
     await fixture.whenStable();
   });
 
+  /** Prüft, dass die Komponente erstellt werden kann. */
   it('should create', () => {
     expect(component).toBeTruthy();
   });

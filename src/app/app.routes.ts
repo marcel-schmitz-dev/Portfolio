@@ -3,6 +3,7 @@ import { Home } from './features/home/home';
 import { LegalNotice } from './features/legal-notice/legal-notice';
 import { PrivacyPolicy } from './features/privacy-policy/privacy-policy';
 
+/** Routen der Anwendung: Startseite, Impressum und Datenschutzerklärung. */
 export const routes: Routes = [
     { path: '', component: Home },
     { path: 'legal-notice', component: LegalNotice },

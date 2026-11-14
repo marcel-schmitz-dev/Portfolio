@@ -4,11 +4,13 @@ import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 import { LanguageService } from '../../shared/services/language.service';
 
+/** Ein Abschnitt der Datenschutzerklärung mit Überschrift und Absätzen. */
 interface PolicySection {
   title: string;
   paragraphs: string[];
 }
 
+/** Seite mit der Datenschutzerklärung in Deutsch und Englisch. */
 @Component({
   selector: 'app-privacy-policy',
   standalone: true,
@@ -17,20 +19,29 @@ interface PolicySection {
   styleUrls: ['../legal-notice/legal-notice.scss']
 })
 export class PrivacyPolicy {
+  /** Zentraler Dienst für die gewählte Sprache. */
   private language = inject(LanguageService);
 
+  /**
+   * Gibt die aktuelle Sprache zurück.
+   * @returns Die aktive Sprache.
+   */
   get currentLang(): 'de' | 'en' {
     return this.language.lang;
   }
 
+  /** Texte der Navigation. */
   nav = {
     de: { whyMe: 'Warum ich', skills: 'Fähigkeiten', projects: 'Projekte', contact: 'Kontakt' },
     en: { whyMe: 'Why me', skills: 'Skills', projects: 'Projects', contact: 'Contact' }
   };
 
+  /** Seitentitel in beiden Sprachen (mit Trennhilfe für schmale Bildschirme). */
   title = { de: 'Datenschutz\u00ADerklärung', en: 'Privacy Policy' };
+  /** Stand der Datenschutzerklärung. */
   date = { de: 'Stand: November 2026', en: 'Last updated: November 2026' };
 
+  /** Alle Abschnitte der Datenschutzerklärung je Sprache. */
   sections: Record<'de' | 'en', PolicySection[]> = {
     de: [
       {
@@ -122,10 +133,15 @@ export class PrivacyPolicy {
     ]
   };
 
+  /**
+   * Liefert die Navigationstexte in der aktuellen Sprache.
+   * @returns Die Navigationstexte.
+   */
   get t() {
     return this.nav[this.currentLang];
   }
 
+  /** Wechselt zwischen Deutsch und Englisch. */
   toggleLanguage(): void {
     this.language.toggle();
   }

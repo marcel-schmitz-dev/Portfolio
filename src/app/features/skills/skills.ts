@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 
+/** Abschnitt mit meinen Fähigkeiten und den Technologien, die ich gerade lerne. */
 @Component({
   selector: 'app-skills',
   standalone: true,
@@ -7,8 +8,10 @@ import { Component, Input } from '@angular/core';
   styleUrl: './skills.scss',
 })
 export class Skills {
+  /** Aktuelle Sprache der Komponente (Deutsch oder Englisch). */
   @Input() lang: 'de' | 'en' = 'de';
 
+  /** Übersetzte Texte der Komponente. */
   translations = {
     de: {
       title: 'Fähigkeiten',
@@ -24,6 +27,7 @@ export class Skills {
     }
   };
 
+  /** Technologien, die ich beherrsche. */
   skillList = [
     { name: 'Angular', icon: './assets/Skills/Angular.png' },
     { name: 'TypeScript', icon: './assets/Skills/TypeScript.png' },
@@ -37,11 +41,16 @@ export class Skills {
     { name: 'Scrum', icon: './assets/Skills/scrum.png' },
   ];
 
+  /** Technologien, die ich gerade lerne. */
   learningList = [
     { name: 'React', icon: './assets/Skills/React.png' },
     { name: 'Vue.js', icon: './assets/Skills/Vue.png' },
   ];
 
+  /**
+   * Liefert die Texte in der aktuell gewählten Sprache.
+   * @returns Das Übersetzungsobjekt der aktuellen Sprache.
+   */
   get t() {
     return this.translations[this.lang] || this.translations.de;
   }

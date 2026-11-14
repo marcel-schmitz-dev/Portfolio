@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 
+/** Eine Stimme aus dem Team mit Projektbezug und Profil-Link. */
 interface Review {
   name: { de: string; en: string };
   project: { de: string; en: string };
@@ -8,6 +9,7 @@ interface Review {
   linkedin: string;
 }
 
+/** Abschnitt „Need a teamplayer?“ mit Feedback aus dem Team. */
 @Component({
   selector: 'app-teamplayer',
   standalone: true,
@@ -16,8 +18,10 @@ interface Review {
   styleUrl: './teamplayer.scss',
 })
 export class Teamplayer {
+  /** Aktuelle Sprache der Komponente (Deutsch oder Englisch). */
   @Input() lang: 'de' | 'en' = 'en';
 
+  /** Übersetzte Texte der Komponente. */
   translations = {
     de: {
       title: 'Du suchst einen Teamplayer? Das sagen meine Kolleg:innen über mich',
@@ -31,6 +35,7 @@ export class Teamplayer {
     },
   };
 
+  /** Angezeigte Teamstimmen. */
   reviews: Review[] = [
     {
       name: { de: 'Teamkollege', en: 'Teammate' },
@@ -64,6 +69,10 @@ export class Teamplayer {
     },
   ];
 
+  /**
+   * Liefert die Texte in der aktuell gewählten Sprache.
+   * @returns Das Übersetzungsobjekt der aktuellen Sprache.
+   */
   get t() {
     return this.translations[this.lang];
   }

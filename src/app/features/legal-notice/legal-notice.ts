@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Header } from '../../shared/components/header/header';
 import { Footer } from '../../shared/components/footer/footer';
 
+/** Seite mit dem Impressum in Deutsch und Englisch. */
 @Component({
   selector: 'app-legal-notice',
   standalone: true,
@@ -12,12 +13,18 @@ import { Footer } from '../../shared/components/footer/footer';
   styleUrls: ['./legal-notice.scss']
 })
 export class LegalNotice {
+  /** Zentraler Dienst für die gewählte Sprache. */
   private language = inject(LanguageService);
 
+  /**
+   * Gibt die aktuelle Sprache zurück.
+   * @returns Die aktive Sprache.
+   */
   get currentLang(): 'de' | 'en' {
     return this.language.lang;
   }
 
+  /** Texte des Impressums und der Navigation. */
   translations = {
     de: {
       subtitle: 'FRONTEND-ENTWICKLER',
@@ -71,10 +78,15 @@ export class LegalNotice {
     }
   };
 
+  /**
+   * Liefert die Texte in der aktuell gewählten Sprache.
+   * @returns Das Übersetzungsobjekt der aktuellen Sprache.
+   */
   get t() {
     return this.translations[this.currentLang];
   }
 
+  /** Wechselt zwischen Deutsch und Englisch. */
   toggleLanguage(): void {
     this.language.toggle();
   }

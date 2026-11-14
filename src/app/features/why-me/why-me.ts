@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 
+/** Abschnitt „Warum ich“ mit kurzer Vorstellung. */
 @Component({
   selector: 'app-why-me',
   standalone: true,
@@ -7,8 +8,10 @@ import { Component, Input } from '@angular/core';
   styleUrl: './why-me.scss',
 })
 export class WhyMe {
+  /** Aktuelle Sprache der Komponente (Deutsch oder Englisch). */
   @Input() lang: 'de' | 'en' = 'de';
 
+  /** Übersetzte Texte der Komponente. */
   translations = {
     de: {
       title: 'Warum ich',
@@ -26,6 +29,10 @@ export class WhyMe {
     }
   };
 
+  /**
+   * Liefert die Texte in der aktuell gewählten Sprache.
+   * @returns Das Übersetzungsobjekt der aktuellen Sprache.
+   */
   get t() {
     return this.translations[this.lang] || this.translations.de;
   }
