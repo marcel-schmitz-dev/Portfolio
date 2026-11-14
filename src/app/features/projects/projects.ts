@@ -47,7 +47,7 @@ export class Projects {
         { name: 'CSS3', icon: './assets/project/Frame 501.png' }
       ],
       image: './assets/project/ByteRunner.png',
-      liveLink: 'https://marcel-schmitz-dev.github.io/ByteRunner/',
+      liveLink: 'https://byterunner.mschmitz-dev.de',
       githubLink: 'https://github.com/marcel-schmitz-dev/ByteRunner'
     },
     {
@@ -76,7 +76,7 @@ export class Projects {
         { name: 'SCSS', icon: './assets/project/SCSS.png' }
       ],
       image: './assets/project/join-preview.webp',
-      liveLink: 'https://marcel-schmitz-dev.github.io/Join/',
+      liveLink: 'https://join.mschmitz-dev.de',
       githubLink: 'https://github.com/marcel-schmitz-dev/Join'
     }
   ];
