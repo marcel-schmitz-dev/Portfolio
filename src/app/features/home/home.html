@@ -1,26 +1,5 @@
 <main class="home">
   <section class="hero" id="home">
-    <div class="hero__mobile-header">
-      <div class="hero__top-logo-block">
-        <img src="./assets/logo.png" alt="M.Schmitz Developer Logo" class="hero__top-logo-img" />
-        <div class="hero__top-logo-text">
-          <span class="name-anta">M.Schmitz</span>
-          <span class="dev-josefin">{{ currentLang === 'de' ? 'entwickler' : 'developer' }}</span>
-        </div>
-      </div>
-
-      <button
-        class="hero__burger-btn"
-        (click)="toggleMenu()"
-        [class.is-open]="isMenuOpen"
-        aria-label="Menu"
-      >
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-      </button>
-    </div>
-
     <div class="hero__top-logo-block desktop-only">
       <img src="./assets/logo.png" alt="M.Schmitz Developer Logo" class="hero__top-logo-img" />
       <div class="hero__top-logo-text">
@@ -58,21 +37,6 @@
           class="social-img social-hover"
         />
       </a>
-    </div>
-
-    <div class="mobile-menu-overlay" [class.is-open]="isMenuOpen">
-      <nav class="mobile-menu-nav">
-        <a (click)="scrollToSection('why-me')">{{ t.whyMe }}</a>
-        <a (click)="scrollToSection('skills')">{{ t.skills }}</a>
-        <a (click)="scrollToSection('projects')">{{ t.projects }}</a>
-        <a (click)="scrollToSection('contact')">{{ t.contact }}</a>
-
-        <div class="mobile-language-switch">
-          <span [class.active]="currentLang === 'de'" (click)="switchLang('de')">DE</span>
-          <span class="separator">/</span>
-          <span [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</span>
-        </div>
-      </nav>
     </div>
 
     <div class="hero__container">

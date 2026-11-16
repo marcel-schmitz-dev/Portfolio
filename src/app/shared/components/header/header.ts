@@ -1,6 +1,7 @@
-import { Component, Input, Output, EventEmitter, Inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, Inject, inject } from '@angular/core';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { LanguageService, Lang } from '../../services/language.service';
 
 /** Navigationsleiste mit Links zu den Abschnitten und Sprachumschalter. */
 @Component({
@@ -17,6 +18,10 @@ export class Header {
   @Input() t: any;
   /** Wird ausgelöst, wenn der Sprachumschalter geklickt wird. */
   @Output() langChange = new EventEmitter<void>();
+  /** Gibt an, ob das mobile Menü geöffnet ist. */
+  isMenuOpen = false;
+  /** Zentraler Dienst für die gewählte Sprache. */
+  private language = inject(LanguageService);
 
   /**
    * @param router Router für die Navigation zwischen den Seiten.
@@ -30,6 +35,29 @@ export class Header {
   /** Meldet dem Elternelement, dass die Sprache gewechselt werden soll. */
   onToggleLanguage(): void {
     this.langChange.emit();
+  }
+
+  /** Öffnet bzw. schließt das mobile Menü. */
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+  }
+
+  /**
+   * Schließt das Menü und navigiert zum Abschnitt.
+   * @param sectionId ID des Zielabschnitts.
+   */
+  goTo(sectionId: string): void {
+    this.isMenuOpen = false;
+    this.navigateToSection(sectionId);
+  }
+
+  /**
+   * Setzt die Sprache direkt und schließt das mobile Menü.
+   * @param lang Die gewünschte Sprache.
+   */
+  switchLang(lang: Lang): void {
+    this.language.lang = lang;
+    this.isMenuOpen = false;
   }
 
   /** Scrollt nach oben bzw. navigiert zur Startseite. */

@@ -1,3 +1,41 @@
+<div class="mobile-bar">
+  <a (click)="onLogoClick()" class="mobile-bar__logo">
+    <img src="./assets/logo.png" alt="M.Schmitz Developer Logo" class="mobile-bar__logo-img" />
+    <span class="mobile-bar__logo-text">
+      <span class="name-anta">M.Schmitz</span>
+      <span class="dev-josefin">{{ currentLang === 'de' ? 'entwickler' : 'developer' }}</span>
+    </span>
+  </a>
+
+  <button
+    type="button"
+    class="burger-btn"
+    (click)="toggleMenu()"
+    [class.is-open]="isMenuOpen"
+    [attr.aria-expanded]="isMenuOpen"
+    aria-label="Menu"
+  >
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </button>
+</div>
+
+<div class="mobile-menu-overlay" [class.is-open]="isMenuOpen">
+  <nav class="mobile-menu-nav">
+    <a (click)="goTo('why-me')">{{ t.whyMe }}</a>
+    <a (click)="goTo('skills')">{{ t.skills }}</a>
+    <a (click)="goTo('projects')">{{ t.projects }}</a>
+    <a (click)="goTo('contact')">{{ t.contact }}</a>
+
+    <div class="mobile-language-switch">
+      <span [class.active]="currentLang === 'de'" (click)="switchLang('de')">DE</span>
+      <span class="separator">/</span>
+      <span [class.active]="currentLang === 'en'" (click)="switchLang('en')">EN</span>
+    </div>
+  </nav>
+</div>
+
 <nav class="hero__nav">
   <div class="hero__nav-container">
     <a (click)="onLogoClick()" class="hero__nav-logo-link">
