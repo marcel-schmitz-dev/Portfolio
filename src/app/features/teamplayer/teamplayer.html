@@ -22,11 +22,14 @@
           {{ t.project }} <a [href]="review.projectLink">{{ review.project[lang] }}</a>
         </p>
         <blockquote class="review__quote">“{{ review.quote[lang] }}”</blockquote>
-        @if (review.linkedin !== '#') {
-          <a class="review__linkedin" [href]="review.linkedin" target="_blank" rel="noopener">
-            {{ t.linkedin }}
-          </a>
-        }
+        <a
+          class="review__linkedin"
+          [href]="review.linkedin"
+          [attr.target]="review.linkedin === '#' ? null : '_blank'"
+          rel="noopener"
+        >
+          {{ t.linkedin }}
+        </a>
       </article>
     }
   </div>
