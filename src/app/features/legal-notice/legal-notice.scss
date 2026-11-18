@@ -3,6 +3,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 900px) {
+    padding-top: 72px;
+  }
 }
 
 .legal-content {
